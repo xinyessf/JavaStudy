@@ -4,55 +4,133 @@
 简单来说 redis 就是一个数据库，不过与传统数据库不同的是 redis 的数据是存在内存中的，所以读写速度非常快，因此 redis 被广泛应用于缓存方向。另外，redis 也经常用来做分布式锁。redis 提供了多种数据类型来支持不同的业务场景。除此之外，redis 支持事务 、持久化、LUA脚本、LRU驱动事件、多种集群方案。 
 ```
 
-### 命令
+### 常用命令
 
-常用命令
+[推荐网站](http://doc.redisfans.com/)
 
 ```
-exists key
-del key
+redis-cli 打开
+exists key 是否存在key
+del key    删除key
 ttl key 查看过期时间
 expire  key 60  设置过期时间单位秒
-
+keys * 获取所有的key
+select 0 选择第一个库
+move myString 1 将当前的数据库key移动到某个数据库,目标库有，则不能移动
+flush db      清除指定库
+randomkey     随机key
+type key      类型
 ```
 
-#### String
+### String
 
 ```
 set name zhangsan 
 get name
-mget key1 key2 同时获得多个key
-  
+mset key1 value1 key2 value2 批量设置
+mget key1 key2 批量获取
+setnx key value  不存在就插入（not exists）
+setex key 1000 value   过期时间（expire）1000秒
+setrange key index value  从index开始替换value
+setrange key index value  从index开始替换value
+incr age        递增
+incrby age 10   递增10
+decr age        递减
+decrby age 10   递减
+incrbyfloat     增减浮点数
+append          追加
+strlen          长度
+getbit/setbit/bitcount/bitop    位操作
 ```
 
-#### hash
+### hash
 
 ```
-hmset user name "zhangsan" age 18
-hget user name
-hgetall user
-hkeys user  获取所有的key
-hvals user
-klen user 	获取长度
+hmset user name "zhangsan" age 18  设置值
+hget user name  获取user 为key的值
+hgetall user	获取所有数据
+hkeys user  	获取所有的key
+hvals user   	所有value
+hlen user 		获取长度
 hsetnx key valueKey value  当hash中不存在的时候赋值
 ```
 
-#### list
+### list
 
 ```
-lpush user a b c    rpush
-lpush user d 
-lrange user 1 10 //取值 1 10
-llen user
---模仿队列操作
-push 和pop操作
+lpush mylist a b c  左插入
+rpush mylist x y z  右插入
+lrange mylist 0 -1  数据集合
+lpop mylist  弹出元素
+rpop mylist  弹出元素
+llen mylist  长度
+lrem mylist count value  删除
+lindex mylist 2          指定索引的值
+lset mylist 2 n          索引设值
+ltrim mylist 0 4         删除key
+linsert mylist before a  插入
+linsert mylist after a   插入
+rpoplpush list list2     转移列表的数据
 ```
 
 ### set
 
 ```
-sadd user a b a 
-smembers user
+sadd myset redis 
+smembers myset       数据集合
+srem myset set1         删除
+sismember myset set1 判断元素是否在集合中
+scard key_name       个数
+sdiff | sinter | sunion 操作：集合间运算：差集 | 交集 | 并集
+srandmember          随机获取集合中的元素
+spop                 从集合中弹出一个元素
+```
+
+### zset
+
+```
+zadd zset 1 one
+zadd zset 2 two
+zadd zset 3 three
+zincrby zset 1 one              增长分数
+zscore zset two                 获取分数
+zrange zset 0 -1 withscores     范围值
+zrangebyscore zset 10 25 withscores 指定范围的值
+zrangebyscore zset 10 25 withscores limit 1 2 分页
+Zrevrangebyscore zset 10 25 withscores  指定范围的值
+zcard zset  元素数量
+Zcount zset 获得指定分数范围内的元素个数
+Zrem zset one two        删除一个或多个元素
+Zremrangebyrank zset 0 1  按照排名范围删除元素
+Zremrangebyscore zset 0 1 按照分数范围删除元素
+Zrank zset 0 -1    分数最小的元素排名为0
+Zrevrank zset 0 -1  分数最大的元素排名为0
+Zinterstore
+zunionstore rank:last_week 7 rank:20150323 rank:20150324 rank:20150325  weights 1 1 1 1 1 1 1
+```
+
+### 排序：
+
+```
+sort mylist  排序
+sort mylist alpha desc limit 0 2 字母排序
+sort list by it:* desc           by命令
+sort list by it:* desc get it:*  get参数
+sort list by it:* desc get it:* store sorc:result  sort命令之store参数：表示把sort查询的结果集保存起来
+```
+
+### 发布订阅
+
+```
+subscribe redisChat   --订阅
+publish redisChat "redis is great"  发消息
+publish redisChat "redis is learn" 发消息
+PSUBSCRIBE pattern [pattern ...] 订阅一个或多个符合给定模式的频道。
+PUBSUB subcommand [argument [argument ...]] 查看订阅与发布系统状态。
+PUBLISH channel message 将信息发送到指定的频道。
+PUNSUBSCRIBE [pattern [pattern ...]] 退订所有给定模式的频道。
+SUBSCRIBE channel [channel ...] 订阅给定的一个或多个频道的信息。
+UNSUBSCRIBE [channel [channel ...]] 指退订给定的频道。
 ```
 
 ### 为什么要用Redis
