@@ -1,0 +1,32 @@
+# IDEA
+
+[idea设置注释模板](https://blog.csdn.net/weixin_42685022/article/details/82682838)
+
+[注释模板](https://blog.csdn.net/weixin_42685022/article/details/82682838)
+
+```
+/*
+/**
+ *  @author: sunsf
+ *  @Date: $Date$ $time$
+ *  @Description:
+ */
+ 
+ /**
+/**
+ * @Description
+ * @Author  sunsf
+ * @Date   $date$ $time$
+ * @Param  $param$
+ * @Return      $return$
+ * @Exception   $exception$
+ *
+ */
+```
+### 常用插件
+
+[阿里扫描插件](https://blog.csdn.net/SIMPLE1995/article/details/95042590)
+
+```
+
+```
