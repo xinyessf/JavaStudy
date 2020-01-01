@@ -43,5 +43,13 @@ System.currentTimeMillis();
 
 [Socker用法](https://blog.csdn.net/ycgslh/article/details/79601363)
 
+### String
+
+[String](http://www.pianshen.com/article/5185320410/)
+
+[常用API](https://www.cnblogs.com/shanheyongmu/p/9583498.html)
+
+
+
 
 

@@ -189,14 +189,16 @@ MemCache
 
 ### 分布式锁
 
- [锁的的方式](https://www.cnblogs.com/itplay/p/10163720.html)
+[锁的的方式](https://www.cnblogs.com/itplay/p/10163720.html)
+
+[分布式锁](https://blog.csdn.net/tuesdayma/article/details/82751790)
 
 ```
 //分布式锁使用
 
 ```
 
-#### Redission学习
+#### Redission分布式学习
 
 [Redis常用命令对应到Redisson对象操作](https://blog.csdn.net/learner198461/article/details/87192834)
 
