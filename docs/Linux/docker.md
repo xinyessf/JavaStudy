@@ -10,10 +10,13 @@
 ## 检查内核版本,必须大于3.0
 uname -r  
 ### ==1.安装yum 源
-yum -y install http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+yum -y install 
+##更新yum
+yum update
 ## 查看之前的版本
 yum list installed | grep docker
-yum remove -y docker-ce.x86_64 docker-client.x86_64 docker-common.x86_64 卸载
+yum remove -y xx 卸载
+或者yum remove docker-*
 rm -rf /var/lib/docker  删除
 ## yum安装docker
 yum install docker-io
@@ -23,7 +26,7 @@ docker version
 ## 启动docker 
 service docker start
 # 开机自启
-sudo systemctl enable docker 
+systemctl enable docker 
 # 启动docker服务  
 systemctl start docker
 systemctl stop docker       #关闭 docker

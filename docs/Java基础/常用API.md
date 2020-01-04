@@ -39,9 +39,9 @@ System.currentTimeMillis();
 
 [Properties详解](https://blog.csdn.net/yjltx1234csdn/article/details/93769032)
 
-### Socker
+### Socket
 
-[Socker用法](https://blog.csdn.net/ycgslh/article/details/79601363)
+[Socket用法](https://blog.csdn.net/ycgslh/article/details/79601363)
 
 ### String
 
@@ -49,7 +49,16 @@ System.currentTimeMillis();
 
 [常用API](https://www.cnblogs.com/shanheyongmu/p/9583498.html)
 
+### 字符串,转数组,集合转换
 
+```
+String str="1,2,3";
+String[] arr=abc.split(",");
+//数组转字符串,并用/连接
+String join = String.join("/", abb);
+//数组->集合
+List<String> paths = new ArrayList<>(Arrays.asList(arr));
+```
 
 
 

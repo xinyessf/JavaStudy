@@ -28,5 +28,12 @@
 [阿里扫描插件](https://blog.csdn.net/SIMPLE1995/article/details/95042590)
 
 ```
+扫描代码规范
+```
+
+[lombok插件](https://www.cnblogs.com/lyosaki88/p/11046014.html)
 
 ```
+省略get,set方法
+```
+
