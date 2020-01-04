@@ -23,6 +23,10 @@
  *
  */
 ```
+### 永久激活姿势
+
+[永久激活破解](https://www.cnblogs.com/huke123/p/12111544.html)
+
 ### 常用插件
 
 [阿里扫描插件](https://blog.csdn.net/SIMPLE1995/article/details/95042590)
