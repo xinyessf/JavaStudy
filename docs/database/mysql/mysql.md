@@ -1,5 +1,7 @@
 ## Mysql
 
+[从头学mysql](https://blog.csdn.net/yanluandai1985/article/details/89632265)
+
 ### mysql安装
 
 [windows下安装](https://www.cnblogs.com/zhangkanghui/p/9613844.html)
