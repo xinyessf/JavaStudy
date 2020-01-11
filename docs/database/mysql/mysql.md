@@ -10,7 +10,7 @@
 
 **维基百科:**
 
-```
+```scss
 MySQL原本是一个开放源码的关系数据库管理系统，原开发者为瑞典的MySQL AB公司，该公司于2008年被昇阳微系统（Sun Microsystems）收购。2009年，甲骨文公司（Oracle）收购昇阳微系统公司，MySQL成为Oracle旗下产品。
 MySQL在过去由于 性能高、成本低、可靠性好，已经成为最流行的开源数据库，因此被广泛地应用在Internet上的中小型网站中。随着MySQL的不断成熟，它也逐渐用于更多大规模网站和应用
 但被甲骨文公司收购后，Oracle大幅调涨MySQL商业版的售价，且甲骨文公司不再支持另一个自由软件项目OpenSolaris的发展，因此导致自由软件社群们对于Oracle是否还会持续支持 MySQL社群版（MySQL之中唯一的免费版本 有所隐忧，MySQL的创始人麦克尔·维德纽斯以MySQL为基础，成立分支计划MariaDB。而原先一些使用MySQL的开源软件逐渐转向MariaDB或其它的数据库
@@ -53,7 +53,7 @@ MySQL在过去由于 性能高、成本低、可靠性好，已经成为最流�
 
 #### 字符编码
 
-```
+```mysql
 /* 字符集编码 */ ------------------
 -- MySQL、数据库、表、字段均可设置编码
 -- 数据编码与客户端编码不需一致
@@ -558,6 +558,8 @@ h. DISTINCT, ALL 选项
 
 ### explain执行计划
 
+[explain执行计划](https://www.cnblogs.com/xiaoboluo768/p/5400990.html)
+
 > - EXPLAIN不考虑触发器、存储过程或用户自定义函数对查询的影响
 > - EXPLAIN不考虑缓存
 > - EXPLAIN只能分析执行计划，不能显示存储引擎在执行查询过程中进行的操作
@@ -568,7 +570,7 @@ h. DISTINCT, ALL 选项
 -- 可以看到上边这些列
 | id | select_type | table | type | possible_keys | key | key_len | ref | rows | Extra
 -- id: 查询的唯一标识
-
+id列数字越大越先执行，如果说数字一样大，那么就从上往下依次执行，id列为null的就表是这是一个结果集，不需要使用它来进行查询。
 -- select_type 查询的类型
 （1）分别用来表示查询的类型，主要是用于区别普通查询、联合查询、子查询等的复杂查询。
 常用的值：
@@ -617,54 +619,220 @@ distinct: 优化distinct操作，查询到匹配的数据后停止继续搜索
 
 ### SQL编程
 
+[语法](https://blog.csdn.net/u012302539/article/details/61197879)
+
+[语法](https://www.cnblogs.com/aigeileshei/p/6729204.html)
+
 #### 函数语法
+
+**系统变量**
+
+```mysql
+-- 系统变量和自定义变量
+系统变量:
+系统定义好的变量：大部分的时候用户根本不需要使用系统变量，系统变量时用来控制服务器的表现的，如：auto_commit.
+查看系统变量
+show variable;
+分为两种方式：会话级别，全局级别
+-- 会话级别：临时修改，仅在当前会话有效
+set 变量名 = 值;
+set @@变量名 = 值;
+-- 全局级别：一次修改，永久生效（对所有客户端都生效）
+set global 变量名 = 值;
+```
+
+**自定义变量**
+
+```mysql
+-- 系统为了区分系统变量。规定用户自定义变量必须使用一个@符号
+set @变量名 = 值;
+-- 方案1：边赋值边查看结果
+select @变量名 = 字段名 from 数据源;
+-- 方案2：只赋值不看结果，要求只能查询结果为1条数据。
+select 字段列表 from 数据源 into 变量列表
+--
+定义方法：（1）set @a=1;#定义回话变量a，初始化为1.
+
+         （2）declare n char(20) default '123';#定义常规变量；
+
+赋值方法：(1)set @a=1;
+
+         (2)select num into @a form book;
+
+         (3)select @a:=num form book;#注：=有时会被误解成比较运算符。
+
+```
 
 **if**
 
+```mysql
+    if ... then    #相当于if(...)
+        ...
+    elseif ... then    #相当于else if(...)
+        ...
+    else
+        ...
+    end if
 ```
 
-```
+**case**
 
-**for**
-
-```
-
+```mysql
+ case ...
+        when ... then ...
+        when ... then ...
+        else ...
+    end case
 ```
 
 **while**
 
-```
+```mysql
+(1)while语句
 
-```
+    while ... do
+        ...
+    end while
 
-**参数规则**
+（2）repeat until 语句    #相当于do while语句
 
-```
+    repeat
+        ...
+    until ...#写循环条件
+    end repeat
+
+（3）loop语句
+    label:lopp
+        ...
+        leave label;    #相当于break
+        iterate label;    #相当于continue
+    end loop label
 
 ```
 
 #### 常用的函数
 
-```
+```mysql
+--// 内置函数 ----------
+-- 数值函数
+abs(x)            -- 绝对值 abs(-10.9) = 10
+format(x, d)    -- 格式化千分位数值 format(1234567.456, 2) = 1,234,567.46
+ceil(x)            -- 向上取整 ceil(10.1) = 11
+floor(x)        -- 向下取整 floor (10.1) = 10
+round(x)        -- 四舍五入去整
+mod(m, n)        -- m%n m mod n 求余 10%3=1
+pi()            -- 获得圆周率
+pow(m, n)        -- m^n
+sqrt(x)            -- 算术平方根
+rand()            -- 随机数
+truncate(x, d)    -- 截取d位小数
 
+-- 时间日期函数
+now(), current_timestamp();     -- 当前日期时间
+current_date();                    -- 当前日期
+current_time();                    -- 当前时间
+date('yyyy-mm-dd hh:ii:ss');    -- 获取日期部分
+time('yyyy-mm-dd hh:ii:ss');    -- 获取时间部分
+date_format('yyyy-mm-dd hh:ii:ss', '%d %y %a %d %m %b %j');    -- 格式化时间
+unix_timestamp();                -- 获得unix时间戳
+from_unixtime();                -- 从时间戳获得时间
+
+-- 字符串函数
+length(string)            -- string长度，字节
+char_length(string)        -- string的字符个数
+substring(str, position [,length])        -- 从str的position开始,取length个字符
+replace(str ,search_str ,replace_str)    -- 在str中用replace_str替换search_str
+instr(string ,substring)    -- 返回substring首次在string中出现的位置
+concat(string [,...])    -- 连接字串
+charset(str)            -- 返回字串字符集
+lcase(string)            -- 转换成小写
+left(string, length)    -- 从string2中的左边起取length个字符
+load_file(file_name)    -- 从文件读取内容
+locate(substring, string [,start_position])    -- 同instr,但可指定开始位置
+lpad(string, length, pad)    -- 重复用pad加在string开头,直到字串长度为length
+ltrim(string)            -- 去除前端空格
+repeat(string, count)    -- 重复count次
+rpad(string, length, pad)    --在str后用pad补充,直到长度为length
+rtrim(string)            -- 去除后端空格
+strcmp(string1 ,string2)    -- 逐字符比较两字串大小
+-- 流程函数
+case when [condition] then result [when [condition] then result ...] [else result] end   多分支
+if(expr1,expr2,expr3)  双分支。
+
+-- 聚合函数
+count()
+sum();
+max();
+min();
+avg();
+group_concat()
+
+-- 其他常用函数
+md5();
+default();
 ```
 
 #### 视图
 
-```
+```mysql
+CREATE [ALGORITHM]={UNDEFINED|MERGE|TEMPTABLE}]
+       VIEW 视图名 [(属性清单)]
+       AS SELECT 语句
+       [WITH [CASCADED|LOCAL] CHECK OPTION];
 
+ALGORITHM表示视图选择的算法（可选参数）
+    　　UNDEFINED：MySQL将自动选择所要使用的算法
+    　　MERGE：将视图的语句与视图定义合并起来，使得视图定义的某一部分取代语句的对应部分
+    　　TEMPTABLE：将视图的结果存入临时表，然后使用临时表执行语句
+-- 创建视图
+ CREATE VIEW work_view(ID,NAME,ADDR) AS SELECT id,name,address FROM work;
+-- 删除视图
+DROP VIEW IF EXISTS work_view;
 ```
 
 #### 存储过程
 
-```
+[存储过程](https://segmentfault.com/a/1190000018264669)
 
+```mysql
+show procedure status;
+show create procedure PRO_NAME;
+-- 删除
+drop procedure [if exists] PRO_NAME;
+-- 创建
+delimiter $
+create procedure PRO_NAME(arg1, arg2, ...)
+	begin
+		# procedure body
+		statement;
+		....
+	end$
+delimiter ;
+-- 调用
+call PRO_NAME();
 ```
 
 #### 存储函数
 
-```
+[存储函数](https://blog.csdn.net/mengzuchao/article/details/80686792)
 
+```mysql
+show function status;
+-- 创建
+show create function FUNC_NAME;
+-- 删除
+drop function [if exists] FUNC_NAME;
+--创建
+delimiter $
+create function FUNC_NAME(arg1, arg2, ...) returns ret_type
+begin
+	# function body
+	statement;
+	...
+end$
+delimiter ;
+-- 调用
+select [db_name.]FUNC_NAME(arg1, arg2, ...);
 ```
 
 #### 触发器
@@ -675,8 +843,93 @@ distinct: 优化distinct操作，查询到匹配的数据后停止继续搜索
 
 ### 用户和权限
 
-```
+[mysql用户和权限](https://www.jianshu.com/p/eb9d4ab3991e)
 
+```mysql
+-- ----库级别、表级别、字段级别、管理类权限、程序类权限 
+-- root密码重置
+1. 停止MySQL服务
+2.  [Linux] /usr/local/mysql/bin/safe_mysqld --skip-grant-tables &
+    [Windows] mysqld --skip-grant-tables
+3. use mysql;
+4. UPDATE `user` SET PASSWORD=PASSWORD("密码") WHERE `user` = "root";
+-- 5.7版本修改密码修改了
+所以更改语句替换为update `user` set authentication_string=password('root') where user='root';
+5. FLUSH PRIVILEGES;
+用户信息表：mysql.user
+-- 刷新权限
+FLUSH PRIVILEGES;
+-- 增加用户
+CREATE USER 用户名 IDENTIFIED BY [PASSWORD] 密码(字符串)
+    - 必须拥有mysql数据库的全局CREATE USER权限，或拥有INSERT权限。
+    - 只能创建用户，不能赋予权限。
+    - 用户名，注意引号：如 'user_name'@'192.168.1.1'
+    - 密码也需引号，纯数字密码也要加引号
+    - 要在纯文本中指定密码，需忽略PASSWORD关键词。要把密码指定为由PASSWORD()函数返回的混编值，需包含关键字PASSWORD
+-- 重命名用户
+RENAME USER old_user TO new_user
+-- 设置密码
+SET PASSWORD = PASSWORD('密码')  -- 为当前用户设置密码
+SET PASSWORD FOR 用户名 = PASSWORD('密码') -- 为指定用户设置密码
+-- 删除用户
+DROP USER 用户名
+-- 分配权限/添加用户
+GRANT 权限列表 ON 表名 TO 用户名 [IDENTIFIED BY [PASSWORD] 'password']
+    - all privileges 表示所有权限
+    - *.* 表示所有库的所有表
+    - 库名.表名 表示某库下面的某表
+    GRANT ALL PRIVILEGES ON `pms`.* TO 'pms'@'%' IDENTIFIED BY 'pms0817';
+-- 查看权限
+SHOW GRANTS FOR 用户名
+    -- 查看当前用户权限
+    SHOW GRANTS; 或 SHOW GRANTS FOR CURRENT_USER; 或 SHOW GRANTS FOR CURRENT_USER();
+-- 撤消权限
+REVOKE 权限列表 ON 表名 FROM 用户名
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM 用户名   -- 撤销所有权限
+-- 权限层级
+-- 要使用GRANT或REVOKE，您必须拥有GRANT OPTION权限，并且您必须用于您正在授予或撤销的权限。
+全局层级：全局权限适用于一个给定服务器中的所有数据库，mysql.user
+    GRANT ALL ON *.*和 REVOKE ALL ON *.*只授予和撤销全局权限。
+数据库层级：数据库权限适用于一个给定数据库中的所有目标，mysql.db, mysql.host
+    GRANT ALL ON db_name.*和REVOKE ALL ON db_name.*只授予和撤销数据库权限。
+表层级：表权限适用于一个给定表中的所有列，mysql.talbes_priv
+    GRANT ALL ON db_name.tbl_name和REVOKE ALL ON db_name.tbl_name只授予和撤销表权限。
+列层级：列权限适用于一个给定表中的单一列，mysql.columns_priv
+    当使用REVOKE时，您必须指定与被授权列相同的列。
+-- 权限列表
+ALL [PRIVILEGES]    -- 设置除GRANT OPTION之外的所有简单权限
+ALTER   -- 允许使用ALTER TABLE
+ALTER ROUTINE   -- 更改或取消已存储的子程序
+CREATE  -- 允许使用CREATE TABLE
+CREATE ROUTINE  -- 创建已存储的子程序
+CREATE TEMPORARY TABLES     -- 允许使用CREATE TEMPORARY TABLE
+CREATE USER     -- 允许使用CREATE USER, DROP USER, RENAME USER和REVOKE ALL PRIVILEGES。
+CREATE VIEW     -- 允许使用CREATE VIEW
+DELETE  -- 允许使用DELETE
+DROP    -- 允许使用DROP TABLE
+EXECUTE     -- 允许用户运行已存储的子程序
+FILE    -- 允许使用SELECT...INTO OUTFILE和LOAD DATA INFILE
+INDEX   -- 允许使用CREATE INDEX和DROP INDEX
+INSERT  -- 允许使用INSERT
+LOCK TABLES     -- 允许对您拥有SELECT权限的表使用LOCK TABLES
+PROCESS     -- 允许使用SHOW FULL PROCESSLIST
+REFERENCES  -- 未被实施
+RELOAD  -- 允许使用FLUSH
+REPLICATION CLIENT  -- 允许用户询问从属服务器或主服务器的地址
+REPLICATION SLAVE   -- 用于复制型从属服务器（从主服务器中读取二进制日志事件）
+SELECT  -- 允许使用SELECT
+SHOW DATABASES  -- 显示所有数据库
+SHOW VIEW   -- 允许使用SHOW CREATE VIEW
+SHUTDOWN    -- 允许使用mysqladmin shutdown
+SUPER   -- 允许使用CHANGE MASTER, KILL, PURGE MASTER LOGS和SET GLOBAL语句，mysqladmin debug命令；允许您连接（一次），即使已达到max_connections。
+UPDATE  -- 允许使用UPDATE
+USAGE   -- “无权限”的同义词
+GRANT OPTION    -- 允许授予权限
+-- ------权限---
+-- 创建lisi用户，host为192.168.191.%，%通配符表示192.168.191.xxx结尾的主机都可以连接，密码为12345678。
+grant all on *.* to lisi@'192.168.191.%' identified by '12345678';
+-- 收回权限：
+revoke all on *.* from lisi@'192.168.191.%';
 ```
 
 ### Mysql慢日志
