@@ -74,7 +74,7 @@ mv 原文件名称 新文件名称
 cp aa bb
 ```
 
-### vi文件编辑
+####vi文件编辑
 
 ```
 :wq 保存
@@ -122,6 +122,79 @@ less
 tail  -- 只显示末尾的内容
 ```
 
+#### df
+
+```
+作用：用于查看Linux文件系统的状态信息,显示各个分区的容量、已使用量、未使用量及挂载点等信息。看剩余空间
+语法：df [-hkam] [挂载点]
+-h（human-readable）根据磁盘空间和使用情况 以易读的方式显示 KB,MB,GB等
+-k 　以KB 为单位显示各分区的信息，默认
+-M	以MB为单位显示信息
+-a 　显示所有分区包括大小为0 的分区
+```
+
+#### du
+
+```
+作用：用于查看文件或目录的大小（磁盘使用空间）
+语法：du [-ahs] [文件名目录]
+	-a 显示子文件的大小
+	-h以易读的方式显示 KB,MB,GB等
+	-s summarize 统计总占有量
+eg:
+du -a(all) /home 　显示/home 目录下每个子文件的大小,默认单位为kb
+du -h /home 以K，M,G为单位显示/home 文件夹下各个子目录的大小
+```
+
+#### free
+
+```
+作用：查看内存及交换空间使用状态
+语法： free [-kmg]
+选项：
+-k:    以KB为单位显示，默认就是以KB为单位显示
+-m:    以MB为单位显示
+-g:    以GB为单位显示
+```
+
+#### top
+
+```
+作用：查看系统健康状态  
+显示当前系统中耗费资源最多的进程,以及系统的一些负载情况。
+语法：top [选项]
+	-d 秒数，指定几秒刷新一次，默认3秒（动态显示）
+```
+
+#### 用户相关
+
+```
+useradd [选项] 用户名
+passwd [选项] [用户名]
+userdel -r 删除账号时同时删除宿主目录（remove）
+```
+
+#### RPM
+
+```
+RPM命令使用
+查询所有安装的rpm包: # rpm –qa
+查询mysql相关的包： # rpm –qa | grep mysql
+安装：rpm  -ivh  jdk.rpm
+卸载： rpm –e mysql*
+强行卸载：rpm –e mysql*  --nodeps
+YUM管理
+yellowdog updater modified  软件包管理工具
+查询
+yum list     查询所有可用软件包列表
+yum search  关键字     搜索服务器上所有和关键字相关的包
+可以通过yum info 关键字 来查找包名
+安装
+yum -y install   包名     -y  自动回答yes  
+```
+
+
+
 #### 其他
 
 ```
@@ -131,6 +204,5 @@ ifconfig 显示网络设备
 ping 
 ps -ef|grep tomcat
 kill -9 pid
-
 ```
 
