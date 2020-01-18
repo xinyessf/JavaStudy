@@ -1,5 +1,9 @@
 ### 常用命令
 
+vm如何设置
+
+[设置可以连接](https://blog.csdn.net/u014466635/article/details/80284792)
+
 ```
 cd usr：   切换到该目录下usr目录  
 cd ..（或cd../）：  切换到上一层目录 
@@ -193,6 +197,38 @@ yum search  关键字     搜索服务器上所有和关键字相关的包
 yum -y install   包名     -y  自动回答yes  
 ```
 
+### 端口号
+
+```
+之前查询端口是否被占用一直搞不明白，问了好多人，终于搞懂了，现在总结下：
+
+netstat  -anp  |grep   端口号
+3306为例，netstat  -anp  |grep  3306
+netstat   -nultp
+```
+
+
+
+###yum
+
+```
+yum clean all
+yum makecache
+yum update
+```
+
+#### 上传和下载
+
+```
+yum install lrzsz
+//上传
+rz
+//下载
+sz
+#wget
+yum -y install wget
+```
+
 
 
 #### 其他
@@ -204,4 +240,9 @@ ifconfig 显示网络设备
 ping 
 ps -ef|grep tomcat
 kill -9 pid
+yum install lrzsz
+//上传
+rz
+//下载
+sz
 ```

@@ -39,7 +39,7 @@ MySQL在过去由于 性能高、成本低、可靠性好，已经成为最流�
   	默认字符集为 CHARACTER SET charset_name
     默认校对规则为  COLLATE collation_name  
    举例子:
-   CREATE DATABASE IF NOT EXISTS test CHARACTER SET utf8
+   CREATE DATABASE IF NOT EXISTS shop CHARACTER SET utf8;
 -- 查看已有库
     SHOW DATABASES like test
 -- 查看当前库信息
@@ -423,6 +423,10 @@ DROP INDEX index_name ON table_name;
 -- 修改表结构删除索引
 ALTER TABLE table_name DROP INDEX index_name;
 ```
+
+#### 全文索引
+
+[](https://cloud.tencent.com/developer/article/1159624)
 
 #### 索引创建时机
 
