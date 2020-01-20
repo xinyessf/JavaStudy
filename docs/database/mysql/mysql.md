@@ -51,6 +51,11 @@ MySQL在过去由于 性能高、成本低、可靠性好，已经成为最流�
         同时删除该数据库相关的目录及其目录内容
 -- 
 	DROP DATABASE  IF EXISTS test2;
+-- 举个栗子
+drop database  if exists db1;
+create database db1 charset utf8;
+show databases; //查看
+use db1;  //进入	
 ```
 
 #### 字符编码
@@ -231,6 +236,24 @@ CREATE TABLE `huanyu_user` (
     2. set null，设置为null。主表数据被更新（主键值更新），从表的外键被设置为null。主表记录被删除，从表相关记录外键被设置成null。但注意，要求该外键列，没有not null属性约束。
     3. restrict，拒绝父表删除和更新。
     注意，外键只被InnoDB存储引擎所支持。其他引擎是不支持的。
+    -- 举个栗子  
+DROP TABLE
+IF EXISTS `huanyu_user`;
+CREATE TABLE `huanyu_user` (
+	`id` INT (11) NOT NULL auto_increment PRIMARY KEY,
+	`user_name` VARCHAR (50) DEFAULT NULL COMMENT '用户名',
+	`password` VARCHAR (150) DEFAULT NULL COMMENT '密码',
+	`email` VARCHAR (100) DEFAULT NULL COMMENT '邮箱',
+	`mobile` VARCHAR (20) DEFAULT NULL COMMENT '电话',
+	`password_code` VARCHAR (20) DEFAULT NULL COMMENT '密码code',
+  `status` int default NULL COMMENT '状态，1可用，0禁用',
+	`insert_time` datetime DEFAULT NULL COMMENT '插入时间',
+	`update_time` datetime DEFAULT NULL COMMENT '更新时间',
+	`insert_user_id` date DEFAULT NULL COMMENT '添加人id',
+	`update_user_id` date DEFAULT NULL COMMENT '更新人id'
+) ENGINE = INNODB DEFAULT CHARSET = utf8mb4 COMMENT = '用户表';
+INSERT INTO `test`.`huanyu_user` (`id`, `user_name`, `password`, `email`, `mobile`, `password_code`, `status`, `insert_time`, `update_time`, `insert_user_id`, `update_user_id`)
+VALUES ('1', '小柏', '9a6fc67c75fa15834f89ad215f10946c', 'fandexil@aliyun.com', '13530215447', 'bjXxTE', '1', '2019-12-21 21:03:06', NULL, NULL, NULL);
 ```
 
 ### 列操作
@@ -253,6 +276,14 @@ CREATE TABLE `huanyu_user` (
             DROP PRIMARY KEY    -- 删除主键(删除主键前需删除其AUTO_INCREMENT属性)
             DROP INDEX 索引名 -- 删除索引
             DROP FOREIGN KEY 外键    -- 删除外键
+-- 举个列子
+增
+alter table aa add column();
+删
+alter table aa drop column;
+改
+alter table aa modify name name_1 varchar(22);
+alter table aa change name name_1  varchar(22);
 ```
 
 列数据类型
@@ -936,12 +967,29 @@ GRANT OPTION    -- 允许授予权限
 grant all on *.* to lisi@'192.168.191.%' identified by '12345678';
 -- 收回权限：
 revoke all on *.* from lisi@'192.168.191.%';
+--
 ```
 
 ### Mysql慢日志
 
 >MySQL的慢查询日志是MySQL提供的一种日志记录，它用来记录在MySQL中响应时间超过阀值的语句，具体指运行时间超过long_query_time值的SQL，则会被记录到慢查询日志中。long_query_time的默认值为10，意思是运行10S以上的语句。默认情况下，MySQLl数据库并不启动慢查询日志，需要我们手动来设置这个参数，当然，如果不是调优需要的话，一般不建议启动该参数，因为开启慢查询日志会或多或少带来一定的性能影响。慢查询日志支持将日志记录写入文件，也支持将日志记录写入数据库表。
 >
+
+
+
+### sql
+
+```mysql
+增
+insert into aa()  values();
+insert into aa values();
+删
+delete from 
+改
+update aa set name ='' where id=''
+查
+select  * from student 
+```
 
 
 
