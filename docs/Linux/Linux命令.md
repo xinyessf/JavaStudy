@@ -233,7 +233,7 @@ yum -y install wget
 
 #### 其他
 
-```
+```find
 reboot : 重启
 halt : 关机
 ifconfig 显示网络设备
