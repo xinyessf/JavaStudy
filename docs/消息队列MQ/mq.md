@@ -101,7 +101,12 @@ D 耗时1000ms
 
 #### 写一个消息队列，该如何进行架构设计啊？
 
+[设计消息队列](https://blog.csdn.net/zhaoziyun21/article/details/88428821)
 
+```
+分布式
+集群,主从
+```
 
 
 
