@@ -66,6 +66,10 @@
 
  [sql在mysql如何被执行.md](docs\database\mysql\sql在mysql如何被执行.md) 
 
+### mysql高并发
+
+ [mysql.md](docs\mysql高并发\了解mysql高并发.md) 
+
 ### MQ
 
  [MQ](docs\消息队列MQ\mq.md) 
@@ -86,13 +90,13 @@
 
  [SpringCloud.md](docs\框架\spring\SpringCloud.md) 
 
-### 分布式
+### 高并发-分布式-高可用
 
-[网站推荐](https://github.com/doocs/advanced-java)
+[分布式](docs\高并发-分布式-高可用\分布式.md) 
 
- [分布式事务.md](docs\分布式\分布式事务.md) 
+[高并发](docs\高并发-分布式-高可用\高并发.md) 
 
- [分布式锁.md](docs\分布式\分布式锁.md) 
+[高可用](docs\高并发-分布式-高可用\高可用.md) 
 
 ### JVM
 
@@ -119,6 +123,10 @@
 ### 爬虫
 
  [爬虫入门](docs\crawler\crawler入门.md) 
+
+### 海量数据处理
+
+[数据处理](docs\海量数据处理\数据处理.md)
 
 ### codeview
 
