@@ -82,3 +82,7 @@ public static void main(String[] args) {
         }
     }
 ```
+
+### 多线程取返回值
+
+[多线程](https://blog.csdn.net/liuyishan1993/article/details/82347703)
