@@ -256,3 +256,9 @@ public class SnowflakeIdWorker {
 }
 ```
 
+#### zookeeper
+
+[zookeeper生成唯一id](https://www.cnblogs.com/xiufengchen/p/10339072.html)
+
+
+

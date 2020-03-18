@@ -58,8 +58,6 @@
 
 ### 库相关
 
-
-
 ####mongodb
 
  [mongodb.md](docs\database\mongodb\mongodb.md) 
@@ -113,6 +111,8 @@
 [高并发](docs\高并发-分布式-高可用\高并发.md) 
 
 [高可用](docs\高并发-分布式-高可用\高可用.md) 
+
+[高并发全局id](docs\高并发-分布式-高可用\高并发全局id.md)
 
 ### JVM
 
