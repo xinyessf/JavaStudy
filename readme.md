@@ -22,15 +22,19 @@
 
  [Map.md](docs\Java基础\collection\Map.md) 
 
-#### IO
-
- [流.md](docs\Java基础\IO\流.md) 
+ [maven.md](docs\Java基础\mavne.md) 
 
  [常用API.md](docs\Java基础\常用API.md) 
 
  [值传递 .md](docs\Java基础\值传递 .md) 
 
  [java一些关键字.md](docs\Java基础\java一些关键字.md) 
+
+[内部类](docs\Java基础\内部类 .md)
+
+#### IO
+
+ [流.md](docs\Java基础\IO\流.md) 
 
 ### linux
 

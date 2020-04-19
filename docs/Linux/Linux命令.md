@@ -1,3 +1,16 @@
+### 虚拟机网络配置
+
+[虚拟机网络配置](https://blog.csdn.net/qq_40521919/article/details/89670472)
+
+[重启网络失败](https://blog.csdn.net/weiyongle1996/article/details/75128239)
+
+```
+1.配置固定ip
+2.集群克隆
+```
+
+
+
 ### 常用命令
 
 vm如何设置
