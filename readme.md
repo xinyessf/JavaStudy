@@ -24,7 +24,7 @@
 
  [Map.md](docs\Java基础\collection\Map.md) 
 
- [maven.md](docs\Java基础\mavne.md) 
+ [maven.md](docs\Java基础\maven.md) 
 
  [常用API.md](docs\Java基础\常用API.md) 
 
@@ -109,6 +109,8 @@
  [SpringBoot.md](docs\框架\spring\SpringBoot.md) 
 
  [SpringCloud.md](docs\框架\spring\SpringCloud.md) 
+
+ [mybatis了解](docs\框架\mybatis\init.md) 
 
 ### 高并发-分布式-高可用
 

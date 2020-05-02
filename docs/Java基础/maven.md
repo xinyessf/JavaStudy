@@ -16,6 +16,14 @@
 
 ### maven常用命令
 
+```
+mvn install -Dmaven.test.skip=true
+mvn clean
+mvn install -Dmaven.test.skip=true -Poracle
+```
+
+
+
 ####clean
 
 >clean是maven工程的清理命令，执行 clean会删除target目录及其目录下所有内容
