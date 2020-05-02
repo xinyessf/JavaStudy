@@ -62,6 +62,40 @@
 >
 >
 
+### 线程的三大特性
+
+>多线程有三大特性，原子性、可见性、有序性
+
+```
+原子性:其实就是保证数据一致、线程安全一部分，
+
+可见性:当多个线程访问同一个变量时，一个线程修改了这个变量的值，其他线程能够立即看得到修改的值。
+若两个线程在不同的cpu，那么线程1改变了i的值还没刷新到主存，线程2又使用了i，那么这个i值肯定还是之前的，线程1对变量的修改线程没看到这就是可见性问题。 
+
+有序性:
+int a=5;
+int b=3;
+a=a+b;
+r=a*a;
+```
+
+### java内存模型
+
+[内存](https://zhuanlan.zhihu.com/p/29881777)
+
+>线程之间的共享变量存储在主内存（Main Memory）中
+>每个线程都有一个私有的本地内存（Local Memory），本地内存是JMM的一个抽象概念，并不真实存在，它涵盖了缓存、写缓冲区、寄存器以及其他的硬件和编译器优化。本地内存中存储了该线程以读/写共享变量的拷贝副本。
+>从更低的层次来说，主内存就是硬件的内存，而为了获取更好的运行速度，虚拟机及硬件系统可能会让工作内存优先存储于寄存器和高速缓存中。
+>Java内存模型中的线程的工作内存（working memory）是cpu的寄存器和高速缓存的抽象描述。而JVM的静态内存储模型（JVM内存模型）只是一种对内存的物理划分而已，它只局限在内存，而且只局限在JVM的内存。
+
+![内存](https://pic3.zhimg.com/80/v2-af520d543f0f4f205f822ec3b151ad46_1440w.jpg)
+
+```
+
+```
+
+
+
 ## 多线程安全
 
 **为什么**
@@ -87,6 +121,10 @@ synchronized(同一个数据){
  可能会发生线程冲突问题
 }
 ```
+
+### 锁的种类
+
+[锁的种类](锁的种类.md)
 
 ### 同步函数
 
@@ -148,15 +186,167 @@ synchronized (ThreadTrain.class) {
 >
 >·    如果对象调用了notifyAll方法就会通知所有等待这个对象控制权的线程继续运行。
 >
+
+```
+•	如果对象调用了wait方法就会使持有该对象的线程把该对象的控制权交出去，然后处于等待状态。
+•	如果对象调用了notify方法就会通知某个正在等待这个对象的控制权的线程可以继续运行。
+•	如果对象调用了notifyAll方法就会通知所有等待这个对象控制权的线程继续运行。
+```
+
+### join和yield
+
+>join作用是让其他线程变为等待
 >
+>Thread.yield()方法的作用：暂停当前正在执行的线程，并执行其他线程。（可能没有效果）
+>
+>yield()让当前正在运行的线程回到可运行状态，以允许具有相同优先级的其他线程获得运行的机会。因此，使用yield()的目的是让具有相同优先级的线程之间能够适当的轮换执行。但是，实际中无法保证yield()达到让步的目的，因为，让步的线程可能被线程调度程序再次选中。
+>
+>结论：大多数情况下，yield()将导致线程从运行状态转到可运行状态，但有可能没有效果。
+
+###Lock 接口与 synchronized 
+
+>Lock接口可以尝试非阻塞地获取锁当前线程尝试获取锁。如果这一时刻锁没有被其他线程获取到，则成功获取并持有锁。
+> Lock 接口能被中断地获取锁与synchronized不同，获取到锁的线程能够响应中断，当获取到的锁的线程被中断时，中断异常将会被抛出，同时锁会被释放。
+>
+>Lock 接口在指定的截止时间之前获取锁，如果截止时间到了依旧无法获取锁，则返回。
+
+### Condition
+
+```
+Condition condition = lock.newCondition();
+res. condition.await();  类似wait
+res. Condition. Signal() 类似notify
+```
+
+### 线程停止
+
+>1. 使用退出标志，使线程正常退出，也就是当run方法完成后线程终止。
+>
+>  2. 使用stop方法强行终止线程（这个方法不推荐使用，因为stop和suspend、resume一样，也可能发生不可预料的结果）。
+>
+>  3. 使用interrupt方法中断线程。
+
+### 守护线程
+
+>什么是守护线程? 守护线程 进程线程(主线程挂了) 守护线程也会被自动销毁.
+>
+>Java中有两种线程，一种是用户线程，另一种是守护线程。
+>
+> 当进程不存在或主线程停止，守护线程也会被停止。
+
+```
+threadDemo.setDaemon(true)
+```
+
+### 优先级
+
+>现代操作系统基本采用时分的形式调度运行的线程，线程分配得到的时间片的多少决定了线程使用处理器资源的多少，也对应了线程优先级这个概念。在JAVA线程中，通过一个int priority来控制优先级，范围为1-10，其中10最高，默认值为5。下面是源码（基于1.8）中关于priority的一些量和方法。
+
+### Volatile
+
+>Volatile 关键字的作用是变量在多个线程之间可见。
+>
+>因为Volatile不用具备原子性。
+
+```java
+class ThreadVolatileDemo extends Thread {
+	public    boolean flag = true;
+	@Override
+	public void run() {
+		System.out.println("开始执行子线程....");
+		while (flag) {
+		}
+		System.out.println("线程停止");
+	}
+	public void setRuning(boolean flag) {
+		this.flag = flag;
+	}
+
+}
+
+public class ThreadVolatile {
+	public static void main(String[] args) throws InterruptedException {
+		ThreadVolatileDemo threadVolatileDemo = new ThreadVolatileDemo();
+		threadVolatileDemo.start();
+		Thread.sleep(3000);
+		threadVolatileDemo.setRuning(false);
+		System.out.println("flag 已经设置成false");
+		Thread.sleep(1000);
+		System.out.println(threadVolatileDemo.flag);
+
+	}
+}
+
+```
+
+###CountDownLatch、CyclicBarrier和Semaphore
+
+[线程](CountDownLatch、CyclicBarrier和Semaphore.md)
+
+### threadLocal
+
+> ThreadLocal提高一个线程的局部变量，访问某个线程拥有自己局部变量。
+>
+>　当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立地改变自己的副本，而不会影响其它线程所对应的副本。
+
+>void set(Object value)设置当前线程的线程局部变量的值。
+>public Object get()该方法返回当前线程所对应的线程局部变量。
+>public void remove()将当前线程局部变量的值删除，目的是为了减少内存的占用，该方法是JDK 5.0新增的方法。需要指出的是，当线程结束后，对应该线程的局部变量将自动被垃圾回收，所以显式调用该方法清除线程的局部变量并不是必须的操作，但它可以加快内存回收的速度。
+>protected Object initialValue()返回该线程局部变量的初始值，该方法是一个protected的方法，显然是为了让子类覆盖而设计的。这个方法是一个延迟调用方法，在线程第1次调用get()或set(Object)时才执行，并且仅执行1次。ThreadLocal中的缺省实现直接返回一个null。
+
+```
+class Res {
+	// 生成序列号共享变量
+	public static Integer count = 0;
+	public static ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>() {
+		protected Integer initialValue() {
+
+			return 0;
+		};
+
+	};
+
+	public Integer getNum() {
+		int count = threadLocal.get() + 1;
+		threadLocal.set(count);
+		return count;
+	}
+}
+
+public class ThreadLocaDemo2 extends Thread {
+	private Res res;
+
+	public ThreadLocaDemo2(Res res) {
+		this.res = res;
+	}
+
+	@Override
+	public void run() {
+		for (int i = 0; i < 3; i++) {
+			System.out.println(Thread.currentThread().getName() + "---" + "i---" + i + "--num:" + res.getNum());
+		}
+
+	}
+
+	public static void main(String[] args) {
+		Res res = new Res();
+		ThreadLocaDemo2 threadLocaDemo1 = new ThreadLocaDemo2(res);
+		ThreadLocaDemo2 threadLocaDemo2 = new ThreadLocaDemo2(res);
+		ThreadLocaDemo2 threadLocaDemo3 = new ThreadLocaDemo2(res);
+		threadLocaDemo1.start();
+		threadLocaDemo2.start();
+		threadLocaDemo3.start();
+	}
+
+}
+
+
+```
 
 
 
+## 线程池
 
+[线程池的使用](线程池的使用.md)
 
-
-
-
-
-
-
+[springboot线程池](线程池的使用.md)
