@@ -53,6 +53,53 @@ D 耗时1000ms
 3.一致性问题 A系统,处理完了返回成功, BCD三个系统哪里,BD系统成功,C失败
 ```
 
+## ActiveMQ
+
+### 产生的背景
+
+>在客户端与服务器进行通讯时.客户端调用后，必须等待服务对象完成处理返回结果才能继续执行。
+>
+> **客户与服务器对象的生命周期紧密耦合,客户进程和服务对象进程都都必须正常运行;如果由于服务对象崩溃或者网络故障导致用户的请求不可达,客户会受到异常**
+>
+>**点对点通信:** **客户的一次调用只发送给某个单独的目标对象。**
+
+### 什么是JMS
+
+JMS是java的消息服务，JMS的客户端之间可以通过JMS服务进行异步的消息传输。
+
+### 环境搭建和使用
+
+[使用](https://www.cnblogs.com/liushisaonian/p/11362379.html)
+
+```shell
+## 查看
+docker images
+## 启动
+systemctl start docker
+## 重启
+service docker restart
+## 下载镜像
+docker pull rabbitmq:management
+## rabbitmq
+docker run -di --name=tensquare_rabbitmq -p 5671:5617 -p 5672:5672 -p 4369:4369 -p 15671:15671 -p 15672:15672 -p 25672:25672 rabbitmq:management
+##访问 
+192.168.73.129:15672/#/
+guest
+guest
+## 查看容器
+docker ps -n 5
+## 关闭
+docker stop 
+## 启动
+docker start
+```
+
+
+
+
+
+##MQ_question
+
 ####Kafka,ActiveMQ,RabbitMQ,RocketMQ 区别,以及适合那些场景
 
 [为什么使用消息队列](https://www.cnblogs.com/terry-love/p/11492397.html)
