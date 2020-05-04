@@ -86,9 +86,19 @@
 
  [mysql.md](docs\mysql高并发\了解mysql高并发.md) 
 
-### MQ
+###中间件
 
- [MQ](docs\消息队列MQ\mq.md) 
+####MQ
+
+ [MQ](docs\中间件\消息队列MQ\mq.md) 
+
+####zookeeper
+
+ [zookeeper](docs\中间件\zookeeper\init.md) 
+
+####Dubbo
+
+ [Dubbo](docs\中间件\Dubbo\init.md) 
 
 ### 搜索引擎
 
