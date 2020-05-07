@@ -991,6 +991,25 @@ update aa set name ='' where id=''
 select  * from student 
 ```
 
+### 数据库备份
+
+```
+手动方式
+cmd控制台:
+在环境变量中配置mysql环境变量
+mysqldump –u -账号 –密码 数据库 [表名1 表名2..]  > 文件路径
+案例: mysqldump -u -root root test > d:\temp.sql
+
+比如: 把temp数据库备份到 d:\temp.bak
+mysqldump -u root -proot test > f:\temp.bak
+如果你希望备份是，数据库的某几张表
+mysqldump -u root -proot test dept > f:\temp.dept.sql
+
+如何使用备份文件恢复我们的数据.
+mysql控制台
+source d:\temp.dept.bak
+```
+
 
 
 ### 其它
