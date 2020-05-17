@@ -119,3 +119,18 @@ ls /
 create /zk "test"
 ```
 
+### zk语法
+
+```shell
+/usr/local/zookeeper/bin/zkCli.sh  ##启动
+##创建文件，并设置初始内容： create /zk "test" 创建一个新的 znode节点“ zk ”以及与它关联的字符串
+ls /
+## 创建
+create /mygirls "angelbaby"
+## 改
+set /mygirls "yangmi"
+set /servers "yangmi"
+# 
+create  /mygirls/node "zijiedian"
+```
+
