@@ -86,18 +86,38 @@ scp -r /usr/local/java/kafka hdp-03:/usr/local/java/kafka
 /usr/local/java/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.73.128:2181
 
 #创建topic
-/usr/local/java/kafka/bin/kafka-topics.sh --create --zookeeper 192.168.73.128:2181 --replication-factor 3 --partitions 3 --topic huanyu
+/usr/local/java/kafka/bin/kafka-topics.sh --create --zookeeper 192.168.73.128:2181 --replication-factor 3 --partitions 3 --topic cmccSmsQueue
 
 #往Kafka的topic中写入数据(命令行的生成者)
-/usr/local/java/kafka/bin/kafka-console-producer.sh --broker-list 192.168.73.128:9092 --topic huanyu
+/usr/local/java/kafka/bin/kafka-console-producer.sh --broker-list 192.168.73.128:9092 --topic cmccSmsQueue
 
 #启动消费者
 /usr/local/java/kafka/bin/kafka-console-consumer.sh --zookeeper 192.168.73.128:2181 --topic huanyu --from-beginning
-
+/usr/local/java/kafka/bin/kafka-console-consumer.sh --zookeeper 192.168.73.128:2181 --topic cmccSmsQueue --from-beginning
 
 # 消费者连接到borker的地址
 ##/usr/local/java/kafka/bin/kafka-console-consumer.sh --bootstrap-server node-###1.xiaoniu.com:9092,node-2.xiaoniu.com:9092,node-3.xiaoniu.com:9092 --topic huanyu --from-beginning 
 ## 查看分区
+/usr/local/java/kafka/bin/kafka-topics.sh --describe --zookeeper 192.168.73.128:2181 --topic huanyu 
+```
 
+### kafka代码实现
+
+[kafka producer  API实现](https://blog.csdn.net/bornzhu/article/details/78678253)
+
+```
+ metadata.broker.list：定义一个或者多个消息中介（broker），Produder通过broker决定主题leader的位置。这里无需 	配置所有的broker，但建议配置多于一个。
+  serializer.class:定义准备传递数据给broker时使用哪个序列化器。
+  partitioner.class：这个是可选项，该类将决定消息将发送到哪个主题分区上。
+  request.required.acks：该值设置为1后，broker收到消息后将发送一个确认信息给producer。
+```
+
+### 代码
+
+路径
+
+```
+项目
+big-data-soa 下 big-data-kafka
 ```
 

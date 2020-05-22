@@ -48,6 +48,8 @@
 
  [windows.md](docs\Linux\windows.md) 
 
+ [sftp使用](docs\Linux\sftp.md) 
+
 ### 线程
 
  [线程了解](docs\线程\init.md) 
@@ -90,21 +92,25 @@
 
 ####MQ
 
- [MQ](docs\中间件\消息队列MQ\mq.md) 
+ [MQ入门](docs\中间件\消息队列MQ\mq.md)
+
+ [kafka](docs\中间件\消息队列MQ\kafka.md)  
 
 ####zookeeper
 
- [zookeeper](docs\中间件\zookeeper\init.md) 
+ [zookeeper入门](docs\中间件\zookeeper\init.md) 
 
 ####Dubbo
 
  [Dubbo](docs\中间件\Dubbo\init.md) 
 
+####nginx
+
+ [nginx入门](docs\中间件\nginx\init.md) 
+
 ### 搜索引擎
 
  [elasticSearch](docs\ElasticSearch\es.md) 
-
-### ES
 
 [github](https://github.com/xinyessf/Java-Project/tree/master/spring-boot-es)
 
