@@ -134,3 +134,10 @@ set /servers "yangmi"
 create  /mygirls/node "zijiedian"
 ```
 
+### zookeeper可视化工具
+
+[]([https://www.cnblogs.com/kylingx/p/12916345.html](https://www.cnblogs.com/kylingx/p/12916345.html))
+
+```
+java -jar zookeeper-dev-ZooInspector.jar
+```

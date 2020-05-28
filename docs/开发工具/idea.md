@@ -5,22 +5,19 @@
 [注释模板](https://blog.csdn.net/weixin_42685022/article/details/82682838)
 
 ```
-/*
 /**
+ *	
  *  @author: sunsf
- *  @Date: $Date$ $time$
- *  @Description:
+ *  @date: $Date$ $time$
  */
  
- /**
 /**
- * @Description
- * @Author  sunsf
- * @Date   $date$ $time$
- * @Param  $param$
- * @Return      $return$
- * @Exception   $exception$
- *
+ * 
+ * @author  sunsf
+ * @date   $date$ $time$
+ * @param  $param$
+ * @return      $return$
+ * @exception   $exception$
  */
 ```
 ### 永久激活姿势

@@ -4,11 +4,15 @@
 
 TortoiseGit:[https://download.tortoisegit.org/tgit/](https://download.tortoisegit.org/tgit/)
 
+[登录]([https://blog.csdn.net/qq_28584685/article/details/53781473](https://blog.csdn.net/qq_28584685/article/details/53781473))
+
 ```
 1. 设置用户名
 git config --global user.name 'sanqianhuanyu' 
 2. 设置用户名邮箱
 git config --global user.email '12345677@qq.com'
+
+//设置不用每次登录都验证
 ```
 
 ## github
