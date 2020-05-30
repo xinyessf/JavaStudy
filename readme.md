@@ -94,7 +94,7 @@
 
  [MQ入门](docs\中间件\消息队列MQ\mq.md)
 
- [kafka](docs\中间件\消息队列MQ\kafka.md)  
+ [kafka入门搭建](docs\中间件\消息队列MQ\kafka.md)
 
 ####zookeeper
 

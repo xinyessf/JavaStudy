@@ -4,13 +4,15 @@
 
 TortoiseGit:[https://download.tortoisegit.org/tgit/](https://download.tortoisegit.org/tgit/)
 
+[小乌龟百度网盘]( https://blog.csdn.net/x1562092008/article/details/102842286 )
+
 [登录]([https://blog.csdn.net/qq_28584685/article/details/53781473](https://blog.csdn.net/qq_28584685/article/details/53781473))
 
 ```
 1. 设置用户名
-git config --global user.name 'sanqianhuanyu' 
+git config --global user.name 'xinyesunsf' 
 2. 设置用户名邮箱
-git config --global user.email '12345677@qq.com'
+git config --global user.email 'fandexilu@aliyun.com'
 
 //设置不用每次登录都验证
 ```
