@@ -36,6 +36,14 @@ git push -u origin master
 
 ## git开发用到命令
 
+### 解决下载慢的问题
+
+```
+https://zhuanlan.zhihu.com/p/102409790
+```
+
+
+
 ### git分支文件
 
 ```
