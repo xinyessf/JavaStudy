@@ -4,9 +4,13 @@
 
 [重启网络失败](https://blog.csdn.net/weiyongle1996/article/details/75128239)
 
+[设置虚拟机网络]( https://blog.csdn.net/Joker_honey/article/details/78357474?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase )
+
 ```
 1.配置固定ip
 2.集群克隆
+删除 /etc/sysconfig/network-scripts/ifcfg-eth0
+只留下ifcfg-eth0
 ```
 
 

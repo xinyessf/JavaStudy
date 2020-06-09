@@ -38,6 +38,12 @@
 
  [流.md](docs\Java基础\IO\流.md) 
 
+#### http
+
+[httpclient请求](docs\Java基础\http\httpclientCode.md)
+
+[okhttp请求](docs\Java基础\http\okCode.md)
+
 ### linux
 
  [项目发布.md](docs\Linux\项目发布.md) 
@@ -110,7 +116,11 @@
 
 ### 搜索引擎
 
- [elasticSearch](docs\ElasticSearch\es.md) 
+ [elasticSearch了解](docs\elasticSearch\es了解.md) 
+
+ [基于kibana的elasticSearch案例一](docs\elasticSearch\es案例一.md) 
+
+ [elasticSearch面试](docs\elasticSearch\es面试.md) 
 
 [github](https://github.com/xinyessf/Java-Project/tree/master/spring-boot-es)
 
