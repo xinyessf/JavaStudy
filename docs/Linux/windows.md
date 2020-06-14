@@ -60,7 +60,7 @@ mysql -uroot -p
 
 ### vue
 
-[window镜像安装]([https://blog.csdn.net/zjh_746140129/article/details/80460965](https://blog.csdn.net/zjh_746140129/article/details/80460965))
+[window镜像安装]([https://blog.csdn.net/zjh_746140129/article/details/80460965](https://blog.csdn.net/zjh_746140129/article/details/80460965)
 
 ```
 

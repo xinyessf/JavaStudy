@@ -1,5 +1,7 @@
 ##zookeeper
 
+[官网](https://zookeeper.apache.org/doc/current/zookeeperOver.html)
+
 ### 什么是zookeeper
 
 >Zookeeper是一个分布式开源框架，提供了协调分布式应用的基本服务，它向外部应用暴露一组通用服务——分布式同步（Distributed Synchronization）、命名服务（Naming Service）、集群维护（Group Maintenance）等，简化分布式应用协调及其管理的难度，提供高性能的分布式服务。ZooKeeper本身可以以单机模式安装运行，不过它的长处在于通过分布式ZooKeeper集群（一个Leader，多个Follower），基于一定的策略来保证ZooKeeper集群的稳定性和可用性，从而实现分布式应用的可靠性。
@@ -136,8 +138,36 @@ create  /mygirls/node "zijiedian"
 
 ### zookeeper可视化工具
 
-[]([https://www.cnblogs.com/kylingx/p/12916345.html](https://www.cnblogs.com/kylingx/p/12916345.html))
+[可视化工具]([https://www.cnblogs.com/kylingx/p/12916345.html](https://www.cnblogs.com/kylingx/p/12916345.html)
 
 ```
 java -jar zookeeper-dev-ZooInspector.jar
 ```
+
+### zookeeper 集群机制
+
+```shell
+可用/不可用
+leader 是否可用的状态/不可用状态
+节点,不要把zookeeper当作数据库使用,需要快速,使用
+## 如何使用 node
+zookeeper 是一个目录树结构,node 可以存数据1M,分为持久节点和临时节点
+临时节点的 锁释放,靠的session
+序列节点
+## 完整属性
+集群创建节点,要么全部成功,要么全部失败
+## 
+```
+
+![img](img/zk1.jpg)
+
+```
+
+```
+
+
+
+#### 了解
+
+
+
