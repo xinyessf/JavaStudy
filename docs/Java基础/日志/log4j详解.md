@@ -1,0 +1,22 @@
+### 样例
+
+```
+log4j.rootLogger=info,stdout,file
+
+log4j.logger.java.sql=info,stdout
+log4j.logger.java.sql.PreparedStatement=info,stdout
+#控制台日志
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.out
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d %-5p %c{1}:%L - %m%n
+
+log4j.appender.file=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.file.Threshold=info
+log4j.appender.file.File=./logs/anti
+log4j.appender.file.DatePattern='.'yyyy-MM-dd'.log'
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.Append=true
+log4j.appender.file.layout.ConversionPattern=%d{yyyy-MM-dd HH\:mm\:ss} %5p %c{1}\:%L - %m%n
+```
+
