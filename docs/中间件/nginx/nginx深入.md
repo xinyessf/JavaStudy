@@ -100,6 +100,9 @@ http://nginx.org
 ./ configure --prefix=/安装路径
 
 make && make install
+
+
+
 ```
 
 
@@ -552,6 +555,7 @@ Proxy_pass http://192.168.43.152/
     server 192.168.43.152:80;
     server 192.168.43.153:80;
 }
+
 
 ```
 

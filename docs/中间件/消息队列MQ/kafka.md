@@ -77,7 +77,7 @@ kafka集群安装
 
 ```
 
-**安装**
+####安装
 
 ```shell
 ## 需要安装zookeeper 集群请看说明
@@ -107,6 +107,12 @@ scp -r /usr/local/java/kafka hdp-03:/usr/local/java/kafka
 ## 分别启动,下边的是一个命令
 /usr/local/java/kafka/bin/kafka-server-start.sh -daemon /usr/local/java/kafka/config/server.properties 
 
+
+```
+
+#### 后台常用命令
+
+```shell
 #查看topic信息
 /usr/local/java/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.73.128:2181
 
@@ -122,11 +128,32 @@ scp -r /usr/local/java/kafka hdp-03:/usr/local/java/kafka
 /usr/local/java/kafka/bin/kafka-console-consumer.sh --zookeeper 192.168.73.128:2181 --topic cuccSmsQueue --from-beginning
 /usr/local/java/kafka/bin/kafka-console-consumer.sh --zookeeper 192.168.73.128:2181 --topic ctccSmsQueue --from-beginning
 
+-- 
+/usr/local/java/kafka/bin/kafka-console-consumer.sh   --abc --bootstrap-server  node02:9092  --topic  cmccSmsQueue
+
 # 消费者连接到borker的地址
 ##/usr/local/java/kafka/bin/kafka-console-consumer.sh --bootstrap-server node-###1.xiaoniu.com:9092,node-2.xiaoniu.com:9092,node-3.xiaoniu.com:9092 --topic huanyu --from-beginning 
 ## 查看分区
-/usr/local/java/kafka/bin/kafka-topics.sh --describe --zookeeper 192.168.73.128:2181 --topic huanyu 
+/usr/local/java/kafka/bin/kafka-topics.sh --describe --zookeeper 192.168.73.128:2181 --topic cmccSmsQueue 
+
+## 根据group id
+
+## 单机生产者
+/usr/local/java/kafka/bin/kafka-console-producer.sh --broker-list 192.168.73.128:2181 --topic topic_demo
+
+## 集群生产者
+/usr/local/java/kafka/bin/kafka-console-consumer.sh --zookeeper 192.168.73.128:2181 --topic cmccSmsQueue --from-beginning
+
+## 单机消费者
+/usr/local/java/kafka/bin/kafka-console-consumer.sh --zookeeper 192.168.73.128:2181 --topic topic_demo --consumer-property group.id=group1
+
+/usr/local/java/kafka/bin/kafka-console-consumer.sh --zookeeper 192.168.73.128:2181 --topic cmccSmsQueue spring.kafka.consumer.group-id=test-group
+
+## 列表
+
 ```
+
+
 
 ### kafka代码实现
 

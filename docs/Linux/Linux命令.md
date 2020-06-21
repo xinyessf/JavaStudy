@@ -33,6 +33,7 @@ mkdir 创建文件
 pwd   查看当前路径
 chmod 777 添加所有权限
 find  /home  -name  "*.txt"   查找文件
+find  /  -name  "my.cnf" 
 find  /home  -iname  "*.txt"  忽略大小写查找文件     
 touch a.txt  创建文件
 vi 进入编辑,如下
