@@ -141,23 +141,23 @@ ES集群核心原理分析:
 
 [搭建详细步骤](https://blog.csdn.net/xiaoge335/article/details/100575925)
 
-[7.6.0安装](https://www.cnblogs.com/hxuhongming/p/12825695.html ]
+[7.6.0安装](https://www.cnblogs.com/hxuhongming/p/12825695.html)
 
 [Docker搭建ES集群](https://www.cnblogs.com/toov5/p/11361413.html)
 
 [es集群原理和搭建](https://www.cnblogs.com/soft2018/p/10213266.html)
 
-[安装]( https://blog.csdn.net/Aolani_L/article/details/105874159 )
+[安装]( https://blog.csdn.net/Aolani_L/article/details/105874159)
 
 [原理](https://www.cnblogs.com/leeSmall/p/9220535.html)
 
->自带的jdk14,所以不用安装jdk即可使用
+>自带的jdk11,所以不用安装jdk即可使用
 
 **7.6.0安装**
 
 ```shell
 
-##3台 ，需要添加域名
+##3台 ，需要添加域名  jdk11
 192.168.73.134 hbase-01
 192.168.73.135 hbase-02
 192.168.73.136 node-136
@@ -271,9 +271,91 @@ http://localhost:9100/
 
 ```
 
+####5.6.0安装
+
+[5.6.0安装](https://blog.csdn.net/u013571608/article/details/78479949)
+
+[5.6.0集群搭建](https://blog.csdn.net/weixin_34192816/article/details/92166673)
+
+[5.6.0](https://blog.csdn.net/sinat_42724379/article/details/102590447?utm_medium=distribute.pc_relevant.none-task-blog-OPENSEARCH-19.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-OPENSEARCH-19.nonecase)
+
+>vi /etc/sysconfig/network
+>
+>weget  https://artifacts.elastic.co/downloads/kibana/kibana-5.6.0-linux-x86_64.tar.gz
+
+**启动**
+
+```shell
+## 启动es
+su es      #由root用户切换到es用户
+cd /usr/local/java/elasticsearch-5.6.0 
+bin/elasticsearch
+./bin/elasticsearch -d 
+#http://192.168.73.128:9200/_cluster/health?pretty=true
+## 启动kibana 192.168.73.128
+cd /usr/local/java/elasticsearch-5.6.0
+cd /usr/local/java/kibana-5.6.0-linux-x86_64/bin
+## 启动header 在window下
+./kibana
+### http://192.168.73.128:5601/app/kibana
+```
+
+**搭建**
+
+```shell
+##ip : 192.168.73.128  192.168.73.129
+##路径
+/usr/local/java/elasticsearch-5.6.0/data
+##1.如何操作集群搭建
+chown -R es:es elasticsearch-5.6.0
+## 启动
+su es      #由root用户切换到es用户
+cd /usr/local/java/elasticsearch-5.6.0 
+bin/elasticsearch
+## 后台启动
+./bin/elasticsearch -d 
+## 报错，必须使用java8
+##http://192.168.73.128:9200/_cluster/health?pretty=true
+
+## slave
+scp -r /usr/local/java/elasticsearch-5.6.0 hdp-02:/usr/local/java
+```
+
+** 设置集群配置**
+
+```shell
+# 设置集群名称，集群内所有节点的名称必须一致。
+cluster.name: myes
+# 表示该节点会不会作为主节点，true表示会；false表示不会
+node.master: true
+# 当前节点是否用于存储数据，是：true、否：false
+node.data: true
+# 索引数据存放的位置
+path.data: /usr/local/java/elasticsearch-5.6.0/data
+# 日志文件存放的位置
+path.logs: /usr/local/java/elasticsearch-5.6.0/logs
+#每个节点名称不一样 其他两台为node-2 ,node-3
+node.name: hdp-01
+#### 实际服务器ip地址
+network.host: 0.0.0.0
+# es对外提供的http端口，默认 9200
+http.port: 9200
+# TCP的默认监听端口，默认 9300
+#transport.tcp.port: 9300
+# 指定将当前节点的master的ip
+##discovery.zen.ping.unicast.hosts: ["192.168.73.128"]
+# Bootstrap the cluster using an initial set of master-eligible nodes:
+#
+##cluster.initial_master_nodes: ["hbase-01", "hbase-02", "node-136"]
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+```
+
 
 
 ## kibana
+
+[国内下载kibana](https://www.newbe.pro/Mirrors/Mirrors-Kibana/)
 
 ###kibana简介
 
@@ -300,7 +382,7 @@ vi kibana.yml
 ## 修改
 server.host=192.168.73.136
 server.port=5601
-elasticsearch.url:
+elasticsearch.url:	
 elasticsearch.hosts: ["http://192.168.73.134:9200","http://192.168.73.135:9200","http://192.168.73.136:9200"]
 ## cd bin
 ./kibana
