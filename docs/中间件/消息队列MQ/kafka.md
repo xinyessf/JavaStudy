@@ -117,7 +117,7 @@ scp -r /usr/local/java/kafka hdp-03:/usr/local/java/kafka
 /usr/local/java/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.73.128:2181
 
 #创建topic
-/usr/local/java/kafka/bin/kafka-topics.sh --create --zookeeper 192.168.73.128:2181 --replication-factor 2 --partitions 2 --topic huanyu
+/usr/local/java/kafka/bin/kafka-topics.sh --create --zookeeper 192.168.73.128:2181 --replication-factor 2 --partitions 2 --topic cmccsmsqueue
 
 #往Kafka的topic中写入数据(命令行的生成者)
 /usr/local/java/kafka/bin/kafka-console-producer.sh --broker-list 192.168.73.128:9092 --topic cmccSmsQueue
@@ -150,7 +150,7 @@ scp -r /usr/local/java/kafka hdp-03:/usr/local/java/kafka
 /usr/local/java/kafka/bin/kafka-console-consumer.sh --zookeeper 192.168.73.128:2181 --topic cmccSmsQueue spring.kafka.consumer.group-id=test-group
 
 ## 列表
-/usr/local/java/kafka/bin/kafka-console-consumer.sh --zookeeper 192.168.73.128:2181 --topic huanyu --from-beginning
+/usr/local/java/kafka/bin/kafka-console-consumer.sh --zookeeper 192.168.73.128:2181 --topic cmccsmsqueue --from-beginning
 ```
 
 
