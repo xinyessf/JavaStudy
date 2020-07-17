@@ -21,7 +21,6 @@ mvn install -Dmaven.test.skip=true
 mvn clean
 mvn install -Dmaven.test.skip=true -Poracle
 mvn -U idea:idea
-
 把包内的*.lastUpdated和.repositories都删了，刷新下maven就可以启动了
 ```
 
