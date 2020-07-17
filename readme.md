@@ -118,6 +118,14 @@
 
  [nginx入门](docs\中间件\nginx\init.md) 
 
+[tenginx搭建](docs\中间件\nginx\tenige.md)
+
+[nginx配置详解](docs\中间件\nginx\nginx深入.md)
+
+#### keepalived
+
+[了解keepalived](docs\中间件\keepalive\了解keepalive.md)
+
 ### 搜索引擎
 
  [elasticSearch了解](docs\elasticSearch\es了解.md) 

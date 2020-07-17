@@ -26,6 +26,178 @@ MySQL在过去由于 性能高、成本低、可靠性好，已经成为最流�
 >
 >数据控制语言DCL
 
+### linux中主主搭建
+
+>2台主主
+
+####主主搭建
+
+#### 删除干净
+
+```shell
+rpm -qa | grep mysql
+rpm -qa | grep mariadb
+rm -rf /etc/my.cnf
+rm -rf /etc/init.d/mysqld
+whereis mysql
+vi /etc/rc.d/rc.local
+## /etc/init.d/mysqld start
+##
+vi /root/.bash_profile
+source /root/.bash_profile 
+```
+
+
+
+#####解压版
+
+```shell
+##安装前，我们可以检测系统是否自带安装 MySQL:
+rpm -qa | grep mysql
+rpm -e mysql-community-server-5.7.28-1.el7.x86_64　## 普通删除模式
+rpm -e --nodeps mysql-community-common-5.7.28-1.el7.x86_64
+rpm -e --nodeps mysql-community-client-5.7.28-1.el7.x86_64
+rpm -e --nodeps mysql-community-libs-5.7.28-1.el7.x86_64
+whereis mysql
+##检查否存在 mariadb 数据库，如有，卸载之，卸载同上
+rpm -qa | grep mariadb
+rpm -e --nodeps mariadb-libs-5.5.56-2.el7.x86_64
+## 删除解压版
+yum remove  mysql mysql-server mysql-libs mysql-server;
+find / -name mysql 将找到的相关东西delete掉；
+rpm -qa|grep mysql(查询出来的东东yum remove掉)
+## 日志路径
+## 解压版安装
+mkdir -p /usr/local/mysql     
+cd /usr/local
+tar -xvf mysql-5.7.28-1.el7.x86_64.rpm-bundle.tar
+mv mysql-5.7.28-1.el7.x86_64.rpm-bundle.tar mysql
+## 先检查是否有mysql用户组和mysql用户,没有就添加有就忽略：
+groups mysql
+##MySQL 组和用户
+groupadd mysql
+useradd -g mysql -s /sbin/nologin mysql
+## 更改mysql目录下所有的目录及文件夹所属的用户组和用户，以及权限
+chown -R mysql:mysql /usr/local/mysql
+##chmod -R 755 /usr/local/java/mysql
+cd /usr/local/mysql/support-files/
+cp mysql.server  /etc/init.d/mysqld
+chmod +x /etc/init.d/mysqld             # 添加执行权限
+vi /etc/rc.d/rc.local
+添加 /etc/init.d/mysqld start
+## 设置变量
+vi /root/.bash_profile
+PATH=$PATH:$HOME/bin:/usr/local/mysql/bin:/usr/local/mysql/lib
+source /root/.bash_profile
+## 修改密码
+mysqladmin -u root password 密码
+## 修改端口xx
+```
+
+##### rpm方式
+
+[rpm方式安装](https://www.cnblogs.com/wy-ls/p/8916722.html)
+
+>```
+>cp /usr/share/mysql/my-default.cnf /etc/my.cnf    (5.6)
+>```
+>
+>
+
+```shell
+## 先卸载,如上
+cd /usr/local/mysqlrpm
+tar -xvf mysql-5.7.28-1.el7.x86_64.rpm-bundle.tar
+##
+rpm -ivh mysql-community-common-5.7.28-1.el7.x86_64.rpm
+rpm -ivh mysql-community-libs-5.7.28-1.el7.x86_64.rpm
+rpm -ivh mysql-community-client-5.7.28-1.el7.x86_64.rpm
+rpm -ivh mysql-community-server-5.7.28-1.el7.x86_64.rpm
+##	
+systemctl restart mysqld.service
+systemctl start mysqld.service
+systemctl stop mysqld.service
+## 临时密码
+grep "password" /var/log/mysqld.log
+##
+mysql -uroot -p
+.%Yfp>2PdQTu
+Wm8?_Ky*?jGn
+## 修改密码
+set global validate_password_policy=0;
+set global validate_password_length=1;
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'mvtech!123';
+## 修改远程访问资源
+grant all privileges on *.* to 'root'@'%' identified by '123456' with grant option;
+flush privileges;
+## 设置字符集
+vi /etc/my.cnf
+#在[mysqld]部分添加：
+character-set-server=utf8
+#在文件末尾新增[client]段，并在[client]段添加：
+default-character-set=utf8
+```
+
+##### 配置
+
+```shell
+##
+stop slave;
+start slave;
+## 1
+server-id=1
+log-bin=mysql-bin
+sync_binlog=1
+binlog_checksum=none
+binlog_format=mixed
+auto-increment-increment=2
+auto-increment-offset=1
+slave-skip-errors=all
+replicate-ignore-db=mysql
+replicate-ignore-db=informaton_schema
+replicate-ignore-db=performance_schema
+replicate-ignore-db=sys
+expire_logs_days=7
+## 2
+server-id=2
+log-bin=mysql-bin
+sync_binlog=1
+binlog_checksum=none
+binlog_format=mixed
+auto-increment-increment=2
+auto-increment-offset=2
+slave-skip-errors=all
+replicate-ignore-db=mysql
+replicate-ignore-db=informaton_schema
+replicate-ignore-db=performance_schema
+replicate-ignore-db=sys
+expire_logs_days=7
+## 进入hainan-01 创建repl账号，专门给hainan-02使用
+grant replication slave,replication client on *.* to repl@'192.168.73.139' identified by 'Mvtech@123';
+## 进入hainan-02 创建repl账号，专门给hainan-01使用
+grant replication slave,replication client on *.* to repl@'192.168.73.138' identified by 'Mvtech@123';
+
+## hainan-01 138
+show master status;
+change  master to master_host='192.168.73.139',master_user='repl',master_password='Mvtech@123',master_log_file='mysql-bin.000001',master_log_pos=612;
+
+## hainan-01 139
+show master status;
+change  master to master_host='192.168.73.138',master_user='repl',master_password='Mvtech@123',master_log_file='mysql-bin.000001',master_log_pos=150;
+
+## start slave;
+```
+
+
+
+#### mysql配置相关
+
+```shell
+ show variables like "log%";
+```
+
+
+
 ### 库操作
 
 ```mysql
