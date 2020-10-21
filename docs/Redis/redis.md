@@ -92,6 +92,8 @@ ltrim mylist 0 4         删除key
 linsert mylist before a  插入
 linsert mylist after a   插入
 rpoplpush list list2     转移列表的数据
+
+lrange whitePhone 0 -1
 ```
 
 ####set

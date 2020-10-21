@@ -10,8 +10,11 @@ java -Dfile.encoding=utf-8 -jar markdown-1.0.jar -h study.md
 
 ### visual
 
-```
+```shell
 打开文件 F1
 使用命令:export (pdf)
 export
+
+xxl-
+job   hbase处理不过来
 ```
