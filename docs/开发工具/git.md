@@ -34,6 +34,34 @@ git commit -m "first commit"
 git push -u origin master
 ```
 
+### 解决每次登陆
+
+[github 登陆](https://zhuanlan.zhihu.com/p/81334170)
+
+[配置公钥](https://www.cnblogs.com/qcwblog/p/5709720.html)
+
+```
+git remote add origin git@github.com:xinyessf/JavaStudy.git
+
+git push origin master
+
+## 
+git@github.com:xinyessf/JavaStudy.git
+##
+ssh-keygen -t rsa -C "fandexilu@aliyun.com"
+
+##
+git push --set-upstream origin master
+```
+
+
+
+```
+
+```
+
+
+
 ## git开发用到命令
 
 ### 解决下载慢的问题
