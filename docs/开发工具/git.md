@@ -40,18 +40,24 @@ git push -u origin master
 
 [配置公钥](https://www.cnblogs.com/qcwblog/p/5709720.html)
 
-```
+```shell
+## 移除原有地址
+git remote rm origin
+
+## 添加ssh 地址
 git remote add origin git@github.com:xinyessf/JavaStudy.git
 
+## 设置推送方式是 ssh 的方式
+git push --set-upstream origin master
+
+## 推送至远程仓库
 git push origin master
 
 ## 
 git@github.com:xinyessf/JavaStudy.git
-##
+## 重新设置ssh 登录的方式
 ssh-keygen -t rsa -C "fandexilu@aliyun.com"
 
-##
-git push --set-upstream origin master
 ```
 
 

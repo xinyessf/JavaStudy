@@ -183,11 +183,15 @@ adduser es     #创建普通用户
 passwd es      #修改es用户密码(需连续输入2次)  此处未设置密码
 ## 赋予es普通用户root权限
 ##vi /etc/sudoers
+Mvtech@e2020
 ##chmod 777 /etc/sudoers
 ##es ALL=(ALL) NOPASSWD: ALL
 ## 赋予es用户es安装目录的文件权限
 cd /usr/local/bigdata
-chown -R es:es elasticsearch-7.6.0 #赋予es用户安装文件elasticsearch-7.6.0的权限
+chown -R es:es elasticsearch-6.7.2 #赋予es用户安装文件elasticsearch-7.6.0的权限
+chown es /data01/bigdata/esdata -R
+chown -R es:es elasticsearch-6.7.2 
+chmod -R 0760 /usr/local
 ## 去掉jdk
 vi /etc/profile
 source /etc/profile
@@ -319,6 +323,7 @@ bin/elasticsearch
 
 ## slave
 scp -r /usr/local/java/elasticsearch-5.6.0 hdp-02:/usr/local/java
+chgrp -R es:es elasticsearch-6.7.2
 ```
 
 ** 设置集群配置**
@@ -387,6 +392,7 @@ elasticsearch.hosts: ["http://192.168.73.134:9200","http://192.168.73.135:9200",
 ## cd bin
 ./kibana
 ## http://192.168.73.136:5601/app/kibana
+http://10.212.5.73:5601/app/kibana
 ```
 
 
