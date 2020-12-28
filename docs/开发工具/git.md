@@ -45,7 +45,7 @@ git push -u origin master
 git remote rm origin
 
 ## 添加ssh 地址
-git remote add origin git@github.com:xinyessf/JavaStudy.git
+git remote add origin git@github.com:xinyessf/haiNanDoc.git
 
 ## 设置推送方式是 ssh 的方式
 git push --set-upstream origin master
@@ -53,11 +53,15 @@ git push --set-upstream origin master
 ## 推送至远程仓库
 git push origin master
 
-## 
-git@github.com:xinyessf/JavaStudy.git
+
 ## 重新设置ssh 登录的方式
 ssh-keygen -t rsa -C "fandexilu@aliyun.com"
 
+
+##
+git@github.com:xinyessf/big-data-soa.git
+git@github.com:xinyessf/JavaStudy.git
+git@github.com:xinyessf/haiNanDoc.git
 ```
 
 
@@ -110,6 +114,7 @@ git diff 文件   //查看不同
 git log
 git log --oneline //单行查看日志
 git log –pretty=oneline  -n查看最近几次的commit-ID：
+
 
 ```
 
