@@ -189,6 +189,19 @@ SUBSCRIBE channel [channel ...] 订阅给定的一个或多个频道的信息。
 UNSUBSCRIBE [channel [channel ...]] 指退订给定的频道。
 ```
 
+#### redis内存使用查看
+
+[内存使用](https://blog.csdn.net/hguisu/article/details/90748825)
+
+```
+客户端进入到redis中去
+infO
+```
+
+#### redis配置文件
+
+[配置文件说明](https://blog.csdn.net/qq_29676623/article/details/85471091?utm_term=redis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E8%B7%AF%E5%BE%84&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-1-85471091&spm=3001.4430)
+
 ### redis项目使用
 
 #### 1.控制队列长度

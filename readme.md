@@ -140,6 +140,10 @@
 
  [redis.md](docs\Redis\redis.md) 
 
+ [redis 主从架构](docs\Redis\redis 主从架构.md) 
+
+ [redis 基于哨兵实现高可用](docs\Redis\redis 基于哨兵实现高可用.md) 
+
 ### 框架
 
 #### Spring
