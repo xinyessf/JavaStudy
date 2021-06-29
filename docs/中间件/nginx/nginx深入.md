@@ -615,7 +615,7 @@ upstream httpds {
 location /status {
             check_status;
  
-        }
+}
 
 ```
 

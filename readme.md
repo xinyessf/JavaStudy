@@ -16,6 +16,8 @@
 
  [docker](docs\开发工具\docker.md) 
 
+**Docker** : [Docker 基本概念解读](docs\开发工具\Docker1.md) 、[一文搞懂 Docker 镜像的常用操作！](docs\开发工具/Docker-Image.md)
+
 ### java基础
 
 #### 集合
@@ -74,6 +76,22 @@
 
  [线程池的创建方式.md](docs\线程\线程创建方式使用.md) 
 
+* 并发
+
+**知识点/面试题:** (必看 :+1:)
+
+1. **[Java 并发基础常见面试题总结](docs\线程/2020最新Java并发基础常见面试题总结.md)**
+2. **[Java 并发进阶常见面试题总结](docs\线程/2020最新Java并发进阶常见面试题总结.md)**
+
+**重要知识点详解：**
+
+2. **线程池**：[Java 线程池学习总结](docs\线程/java线程池学习总结.md)、[拿来即用的线程池最佳实践](docs\线程/拿来即用的线程池最佳实践.md)
+3. [乐观锁与悲观锁](docs\线程/面试必备之乐观锁与悲观锁.md)
+4. [ ThreadLocal 关键字解析](docs\线程/万字详解ThreadLocal关键字.md)
+5. [并发容器总结](docs\线程/并发容器总结.md)
+6. [JUC 中的 Atomic 原子类总结](docs\线程/Atomic原子类总结.md)
+7. [AQS 原理以及 AQS 同步组件总结](docs\线程/AQS原理以及AQS同步组件总结.md)
+
 ### 库相关
 
 ####mongodb
@@ -92,7 +110,7 @@
 
  [mysql索引实现-数据结构](docs\database\mysql\mysql索引实现-数据结构.md) 
 
- [杂项](docs\database\mysql\杂项.md) 
+ [关键字解析](docs\database\mysql\杂项.md) 
 
 ### mysql高并发
 
@@ -134,7 +152,7 @@
 
  [elasticSearch面试](docs\elasticSearch\es面试.md) 
 
-[github](https://github.com/xinyessf/Java-Project/tree/master/spring-boot-es)
+[github项目](https://github.com/xinyessf/Java-Project/tree/master/spring-boot-es)
 
 ### Redis
 
@@ -143,6 +161,10 @@
  [redis 主从架构](docs\Redis\redis 主从架构.md) 
 
  [redis 基于哨兵实现高可用](docs\Redis\redis 基于哨兵实现高可用.md) 
+
+[Redis 常见问题总结](docs\Redis/redis-all.md)
+
+[面试/工作必备！3种常用的缓存读写策略！](docs/database/Redis/3种常用的缓存读写策略.md)
 
 ### 框架
 
@@ -202,5 +224,23 @@
 
 ### 杂项
 
+####ppt
+
  [ppt.md](docs\杂项\ppt.md) 
 
+### 面试指南
+
+> 这部分很多内容比如大厂面经、真实面经分析被移除，详见[完结撒花！JavaGuide 面试突击版来啦！](./docs/javaguide面试突击版.md)。
+
+1. **[【备战面试 1】程序员的简历就该这样写](docs\interview\prepare/程序员的简历之道.md)**
+2. **[【备战面试 2】初出茅庐的程序员该如何准备面试？](docs\interview\prepare//interviewPrepare.md)**
+3. **[【备战面试 3】7 个大部分程序员在面试前很关心的问题](docs\interview\prepare//JavaProgrammerNeedKnow.md)**
+4. **[【备战面试 4】Github 上开源的 Java 面试/学习相关的仓库推荐](docs\interview\prepare//JavaInterviewLibrary.md)**
+5. **[【备战面试 5】如果面试官问你“你有什么问题问我吗？”时，你该如何回答](docs\interview\prepare//面试官-你有什么问题要问我.md)**
+6. [【备战面试 6】应届生面试最爱问的几道 Java 基础问题](docs\interview\prepare//应届生面试最爱问的几道Java基础问题.md)
+7. **[【备战面试 7】美团面试常见问题总结(附详解答案)](docs/essential-content-for-interview/PreparingForInterview/美团面试常见问题总结.md)**
+8. **[java基础面试](docs\interview\prepare\java基础面试)**
+
+### 书单
+
+ [基础篇-书单](docs\书单\java基础篇.md) 

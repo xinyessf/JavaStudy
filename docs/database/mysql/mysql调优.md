@@ -1,5 +1,27 @@
 # SQL
 
+### mysql调优的方式
+
+>**慢查询日志**，**EXPLAIN 分析查询**，**profiling分析**以及**show命令查询系统状态及系统变量**，通过定位分析性能的瓶颈，才能更好的优化数据库系统的性能。
+
+```mysql
+show status -- 显示状态信息（扩展show status like ‘XXX’）
+
+show variables -- 显示系统变量（扩展show variables like ‘XXX’）
+
+show innodb status -- 显示InnoDB存储引擎的状态
+
+show processlist -- 查看当前SQL执行，包括执行状态、是否锁表等\
+
+select * from information_schema.processlist;
+
+kill id -- 杀死正在执行的sql线程
+
+mysqladmin variables -u username -p password -- 显示系统变量
+
+mysqladmin extended-status -u username -p password -- 显示状态信息
+```
+
 ### 执行计划
 
 [explain执行计划](https://www.cnblogs.com/xiaoboluo768/p/5400990.html)
@@ -60,4 +82,69 @@ using index condition: 索引条件推送(MySQL 5.6 新特性)，服务器层将
 using where: 服务器层对存储引擎返回的数据进行了过滤
 distinct: 优化distinct操作，查询到匹配的数据后停止继续搜索
 ```
+
+### 如何查看慢
+
+[慢查询学习](https://blog.csdn.net/qq_33862644/article/details/79821134)
+
+>**慢查询日志**：记录所有执行时间超过long_query_time秒的所有查询或者不使用索引的查询
+>
+>注意：平常不要开，只有分析的时候才开（因为开启后sql语句需要往日志里写，也要耗时间）。
+
+```mysql
+show global status like ‘%slow%’;
+-- 慢查询日志开启,路径
+-- 首先查看慢查询日志是否开启
+-- 打开慢查询,临时打开
+set global slow_query_log=on; 
+set long_query_time=0.2;  
+-- 查看慢查询设置时长
+show variables like '%long%'
+-- 不使用索引的慢查询
+show variables like '%quer%';
+-- 查看慢查询的日志
+show variables like '%slow_query_log_file%';
+-- 测试
+select sleep(2);
+explain select sleep(2);
+
+
+
+```
+
+### mysql日志
+
+>**MySQL中的日志包括**：错误日志、二进制日志、通用查询日志、慢查询日志等等。
+
+```mysql
+-- 当前数据库与版本号相关的东西
+show variables like '%version%';
+
+-- 前的通用日志查询是否开启，如果general_log的值为ON则为开启，为OFF则为关闭（默认情况下是关闭的）
+show variables like '%general%';
+-- 查看当前日志输出的格式
+show variables like '%log_output%';
+```
+
+* 通用日志查询设置
+
+```mysql
+-- 开启通用日志查询： 
+set global general_log=on;
+-- 关闭通用日志查询： 
+set globalgeneral_log=off;
+
+-- 设置通用日志输出为表方式： 
+set globallog_output=’TABLE’;
+
+-- 设置通用日志输出为文件方式： 
+set globallog_output=’FILE’;
+
+-- 设置通用日志输出为表和文件方式：
+set global log_output=’FILE,TABLE’;
+```
+
+### sql写法优化
+
+[sql语句优化](https://blog.csdn.net/qq_38789941/article/details/83744271)
 

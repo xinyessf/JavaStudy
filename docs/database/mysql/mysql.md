@@ -1169,8 +1169,6 @@ revoke all on *.* from lisi@'192.168.191.%';
 >MySQL的慢查询日志是MySQL提供的一种日志记录，它用来记录在MySQL中响应时间超过阀值的语句，具体指运行时间超过long_query_time值的SQL，则会被记录到慢查询日志中。long_query_time的默认值为10，意思是运行10S以上的语句。默认情况下，MySQLl数据库并不启动慢查询日志，需要我们手动来设置这个参数，当然，如果不是调优需要的话，一般不建议启动该参数，因为开启慢查询日志会或多或少带来一定的性能影响。慢查询日志支持将日志记录写入文件，也支持将日志记录写入数据库表。
 >
 
-
-
 ### sql
 
 ```mysql
@@ -1216,5 +1214,16 @@ source d:\temp.dept.bak
 1. in()适合B表比A表数据小的情况
 2. exists()适合B表比A表数据大的情况
 当A表数据与B表数据一样大时,in与exists效率差不多,可任选一个使用.
+```
+
+### mysql引擎
+
+[InnoDB存储引擎说明](https://www.sohu.com/a/400249670_99963081)
+
+>MyISAM, Aria, InnoDB, MRG_MYISAM, CSV, BLACKHOLE, MEMORY, PERFORMANCE_SCHEMA, ARCHIVE, FEDERATED  常见的存储引擎
+
+```
+常见的存储引擎：SHOW ENGINES;
+SHOW TABLE STATUS
 ```
 
