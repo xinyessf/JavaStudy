@@ -26,6 +26,12 @@ MySQL在过去由于 性能高、成本低、可靠性好，已经成为最流�
 >
 >数据控制语言DCL
 
+### mysql架构
+
+[]()
+
+![](img/1.png)
+
 ### linux中主主搭建
 
 >2台主主
@@ -1180,7 +1186,7 @@ delete from
 改
 update aa set name ='' where id=''
 查
-select  * from student 
+select  * from student
 ```
 
 ### 数据库备份
