@@ -18,6 +18,8 @@
 
 **Docker** : [Docker 基本概念解读](docs\开发工具\Docker1.md) 、[一文搞懂 Docker 镜像的常用操作！](docs\开发工具/Docker-Image.md)
 
+**Github** ： [Github 这些骚操作](docs\开发工具/Github技巧.md)
+
 ### 网络
 
 [计算机网络常见面试题](docs/网络/计算机网络.md)
@@ -42,7 +44,7 @@
 
  [java一些关键字.md](docs\Java基础\java一些关键字.md) 
 
-[内部类](docs\Java基础\内部类 .md)
+[内部类](docs\Java基础\内部类.md)
 
 #### IO
 
@@ -69,6 +71,12 @@
  [windows.md](docs\Linux\windows.md) 
 
  [sftp使用](docs\Linux\sftp.md) 
+
+[操作系统常见问题总结！](docs/Linux/basis.md)
+
+[后端程序员必备的 Linux 基础知识](docs/Linux/linux.md)
+
+[Shell 编程入门](docs/Linux/Shell.md)
 
 ### 线程
 
@@ -100,6 +108,19 @@
 6. [JUC 中的 Atomic 原子类总结](docs\线程/Atomic原子类总结.md)
 7. [AQS 原理以及 AQS 同步组件总结](docs\线程/AQS原理以及AQS同步组件总结.md)
 
+### 认证授权
+
+**[《认证授权基础》](docs/system-design/authority-certification/basis-of-authority-certification.md)** 这篇文章中我会介绍认证授权常见概念： **Authentication**,**Authorization** 以及 **Cookie**、**Session**、Token、**OAuth 2**、**SSO** 。如果你不清楚这些概念的话，建议好好阅读一下这篇文章。
+
+#### JWT
+
+1. [JWT 优缺点分析以及常见问题解决方案](docs/auth/authority-certification/JWT优缺点分析以及常见问题解决方案.md)
+2. [适合初学者入门 Spring Security With JWT 的 Demo](https://github.com/Snailclimb/spring-security-jwt-guide)
+
+#### SSO(单点登录)
+
+**SSO(Single Sign On)** 即单点登录说的是用户登陆多个子系统的其中一个就有权访问与其相关的其他系统。举个例子我们在登陆了京东金融之后，我们同时也成功登陆京东的京东超市、京东家电等子系统。相关阅读：**[SSO 单点登录看这篇就够了！](docs/auth/authority-certification/SSO单点登录看这一篇就够了.md)**
+
 ### 库相关
 
 ####mongodb
@@ -120,9 +141,9 @@
 
  [关键字解析](docs\database\mysql\杂项.md) 
 
-### mysql高并发
+mysql高并发
 
- [mysql.md](docs\mysql高并发\了解mysql高并发.md) 
+ [mysql.md](docs\database\mysql\mysql高并发.md) 
 
 ###中间件
 
@@ -132,9 +153,21 @@
 
  [kafka入门搭建](docs\中间件\消息队列MQ\kafka.md)
 
+[RabbitMQ 入门](docs\中间件\消息队列MQ\RabbitMQ入门看这一篇就够了.md)
+
+**RocketMQ** : [RocketMQ 入门](docs\中间件\消息队列MQ/message-queue/RocketMQ.md)、[RocketMQ 的几个简单问题与答案](docs\中间件\消息队列MQ//RocketMQ-Questions.md)
+
+**Kafka** ：[Kafka 常见面试题总结](docs\中间件\消息队列MQ/Kafka常见面试题总结.md)
+
 ####zookeeper
 
  [zookeeper入门](docs\中间件\zookeeper\init.md) 
+
+[【入门】ZooKeeper 相关概念总结](docs\中间件\zookeeper/zookeeper-intro.md)
+
+[【进阶】ZooKeeper 相关概念总结](docs\中间件\zookeeper/zookeeper-plus.md)
+
+[【实战】ZooKeeper 实战](docs\中间件\zookeeper/zookeeper-in-action.md)
 
 ####Dubbo
 
@@ -174,6 +207,8 @@
 
 [面试/工作必备！3种常用的缓存读写策略！](docs/database/Redis/3种常用的缓存读写策略.md)
 
+[面试/工作必备！3种常用的缓存读写策略！](docs/database/Redis/3种常用的缓存读写策略.md)
+
 ### 框架
 
 #### Spring
@@ -183,6 +218,30 @@
  [SpringCloud.md](docs\框架\spring\SpringCloud.md) 
 
  [mybatis了解](docs\框架\mybatis\init.md) 
+
+#### Spring/SpringBoot (必看 :+1:)
+
+**知识点/面试题:** 
+
+1. [Spring 常见问题总结](docs\框架\spring\Spring常见问题总结.md)
+2. **[SpringBoot 指南/常见面试题总结](https://github.com/Snailclimb/springboot-guide)**
+
+**重要知识点详解：**
+
+1. **[Spring/Spring 常用注解总结！安排！](docs\框架\spring\SpringBoot+Spring常用注解总结.md)** 
+2. **[Spring 事务总结](docs\框架\spring/Spring事务总结.md)** 
+3. [Spring 中都用到了那些设计模式?](docs\框架\spring\/Spring-Design-Patterns.md)
+
+1. [ 大白话入门 Spring Cloud](docs\框架\spring/spring-cloud.md)
+2. [微服务/分布式大厂真实面试问题解答](https://xiaozhuanlan.com/topic/2895047136)
+
+####微服务
+
+[微服务/分布式大厂真实面试问题解答](https://xiaozhuanlan.com/topic/2895047136)
+
+#### MyBatis
+
+- [MyBatis 常见面试题总结](docs\框架\mybatis/mybatis-interview.md)
 
 ### 高并发-分布式-高可用
 
@@ -212,9 +271,27 @@
 
  [装饰者.md](docs\设计模式\装饰者.md) 
 
+### 数据结构
+
+- **图解数据结构：**
+  1. [线性数据结构 :数组、链表、栈、队列](docs/算法/data-structure/线性数据结构.md)
+  2. [图](docs/dataStructures-algorithms/data-structure/图.md)
+- [不了解布隆过滤器？一文给你整的明明白白！](docs/算法/data-structure/bloom-filter.md)
+
 ### 算法
 
  [算法入门.md](docs\算法\算法入门.md) 
+
+算法这部分内容非常重要，如果你不知道如何学习算法的话，可以看下我写的：
+
+- [算法学习书籍+资源推荐](https://www.zhihu.com/question/323359308/answer/1545320858) 。
+- [如何刷Leetcode?](https://www.zhihu.com/question/31092580/answer/1534887374) 
+
+**常见算法问题总结：**
+
+- [几道常见的字符串算法题总结 ](docs/算法/几道常见的子符串算法题.md)
+- [几道常见的链表算法题总结 ](docs/算法/几道常见的链表算法题.md)
+- [剑指 offer 部分编程题](docs/算法/剑指offer部分编程题.md)
 
 ### 爬虫
 
@@ -251,4 +328,12 @@
 
 ### 书单
 
- [基础篇-书单](docs\书单\java基础篇.md) 
+ [「基础篇」Java 书单](docs\书单/java基础篇.md)
+
+ [「基础篇」Java 书单2](docs\书单/java.md)
+
+
+
+### 技术交流社区推荐
+
+[交流社区](docs\杂项\其它博客.md)
