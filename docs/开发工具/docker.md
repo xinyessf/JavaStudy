@@ -58,7 +58,11 @@ systemctl start docker
 systemctl enable docker
 ##验证安装是否成功(有client和service两部分表示docker安装启动都成功了)
 docker version
+## 默认路径
+/var/lib/docker 
 ```
+
+(默认安装路径)[https://blog.csdn.net/runner668/article/details/80713713]
 
 ### 镜像相关命令
 
@@ -74,5 +78,44 @@ docker pull java:8
 docker images
 ##删除镜像
 docker rmi d23bdf5b1b1b
+```
+
+### docker安装mysql
+
+```shell
+docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+## 搜索镜像
+docker search mysql
+##拉取镜像
+docker pull mysql
+##创建数据库容器mysql
+docker run -di ##name=tensquare_mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root centos/mysql-57-centos7
+```
+
+### 使用
+
+```shell
+##查看
+docker images
+docker ps ## 查看正在运行的容器
+## 查看容器
+docker ps -n 5
+## 查看所有的容器(包含了正在运行的容器以及之前启动过的容器)
+docker ps -a  
+##关闭
+docker stop 
+##启动
+docker start id
+## gogs
+docker run -d ##name=gogs -p 10022:22 -p 3000:3000 -v /var/gogsdata:/datagogs/gogs
+## 删除镜像id
+docke images
+docker rmi 镜像id 
+## 删除容器id
+docker ps -a 
+docker rm 容器id
+## 查看正在运行的容器
+docker ps
+
 ```
 

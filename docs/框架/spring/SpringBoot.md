@@ -68,6 +68,21 @@ spring.http.encoding.enabled=true
 server.tomcat.uri-encoding=UTF-8
 
 spring.mvc.date-format=yyyy-MM-dd
-
 ```
+
+### springboot教程
+
+[spring boot](http://c.biancheng.net/spring_boot/)
+
+### springCloud入门教程
+
+[Spring Cloud入门学习](http://c.biancheng.net/view/5316.html)
+
+[解决boot和cloud版本不一致的问题](https://blog.csdn.net/kxj19980524/article/details/87860876)
+
+[spring config入门学习](https://blog.csdn.net/qazwsxpcm/article/details/88578076)
+
+[spring config入门学习2](https://blog.csdn.net/qazwsxpcm/article/details/88803428?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.control&spm=1001.2101.3001.4242)
+
+
 

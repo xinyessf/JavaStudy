@@ -177,7 +177,9 @@ mysql高并发
 
  [nginx入门](docs\中间件\nginx\init.md) 
 
-[tenginx搭建](docs\中间件\nginx\tenige.md)
+ [nginx入门](docs\中间件\nginx\) 
+
+[tenginx搭建](docs\中间件\nginx\tengine.md)
 
 [nginx配置详解](docs\中间件\nginx\nginx深入.md)
 
@@ -219,7 +221,7 @@ mysql高并发
 
  [mybatis了解](docs\框架\mybatis\init.md) 
 
-#### Spring/SpringBoot (必看 :+1:)
+#### Spring/SpringBoot
 
 **知识点/面试题:** 
 

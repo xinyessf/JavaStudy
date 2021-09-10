@@ -94,6 +94,8 @@ git branch      //列出所有分支
 git branch -d name //删除分支
 git checkout name   //切换分支
 git branch -a  //查看所有分支,包括远程分支
+
+git checkout dev_20210819_constant
 ```
 
 ### git文件增删
@@ -123,7 +125,7 @@ git log –pretty=oneline  -n查看最近几次的commit-ID：
 ```
 git reset --hard HEAD^   //回退到上一版本
 ---合并分支到 master
-git merge dev   //合并分支到master
+git merge master  //合并分支到master
 ```
 
 ### 分支
@@ -139,7 +141,7 @@ git merge --no-ff -m "merge bug issue-404"
 //然后在master中删除临时分支
 git branch -d issue-404
 //回到自己的分支干活
-git checkout dev
+git checkout dev_20210819_constant
 git stash list   //查看临时分支
 //删除
 git stash  pop  //删除的同时,恢复stash
@@ -150,8 +152,10 @@ git stash  pop  //删除的同时,恢复stash
 ```
 git pull //pull成功了,但是要解决冲突
 git pull --rebase    -- rebase出现问题了 执行 git rebase --abort
-git push origin 分支
+git push origin dev_20210819_constant
 
+git pull origin dev_20210819_constant
+git branch --set-upstream-to=origin/dev_20210819_constant
 ```
 
 ### bug分支
@@ -163,7 +167,7 @@ git checkout -b issue-404  //创建404分支
 //修改提交
 //切换到master分支
 //修复完成后合并分支到master
-git merge --no-ff
+git merge --no-ff    master
 //然后在master中删除临时分支
 git branch -d issue-404
 //回到自己的分支干活
