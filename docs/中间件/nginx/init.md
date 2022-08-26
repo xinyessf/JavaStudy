@@ -71,11 +71,11 @@ make
 make install
 ##启动
 /usr/local/nginx/sbin/nginx
-/usr/local/nginx/sbin/nginx –s reload ##重启
+/usr/local/nginx/sbin/nginx -s reload ##重启
 ##停止
-/usr/local/nginx/sbin/nginx –s stop
+/usr/local/nginx/sbin/nginx -s stop
 ##测试配置文件是否正常：
-/usr/local/nginx/sbin/nginx –t 
+/usr/local/nginx/sbin/nginx -t 
 ##强制关闭
 pkill nginx
 ##设置开机自启动

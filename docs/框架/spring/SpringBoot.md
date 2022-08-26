@@ -84,5 +84,11 @@ spring.mvc.date-format=yyyy-MM-dd
 
 [spring config入门学习2](https://blog.csdn.net/qazwsxpcm/article/details/88803428?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.control&spm=1001.2101.3001.4242)
 
+### gateway
 
+[gateway过滤策略](https://blog.csdn.net/rain_web/article/details/102469745)
+
+```
+https://blog.csdn.net/rain_web/article/details/102469745
+```
 

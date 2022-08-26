@@ -43,12 +43,20 @@ C:\Users\SnailClimb>jps -l
 
 ### `jstat`: 监视虚拟机各种运行状态信息
 
+[jstat命令详解](https://blog.csdn.net/zhaozheng7758/article/details/8623549)
+
 jstat（JVM Statistics Monitoring Tool） 使用于监视虚拟机各种运行状态信息的命令行工具。 它可以显示本地或者远程（需要远程主机提供 RMI 支持）虚拟机进程中的类信息、内存、垃圾收集、JIT 编译等运行数据，在没有 GUI，只提供了纯文本控制台环境的服务器上，它将是运行期间定位虚拟机性能问题的首选工具。
 
 **`jstat` 命令使用格式：**
 
 ```powershell
 jstat -<option> [-t] [-h<lines>] <vmid> [<interval> [<count>]]
+jstat -gc 10676 
+jstat -class 10676
+jstat -gcnew 10676
+jinfo  -flag MaxHeapSize 10676
+jinfo  -flag PrintGC 10676
+jstat -gcnew 10676
 ```
 
 比如 `jstat -gc -h3 31736 1000 10`表示分析进程 id 为 31736 的 gc 情况，每隔 1000ms 打印一次记录，打印 10 次停止，每 3 行后打印指标头部。
@@ -70,6 +78,8 @@ jstat -<option> [-t] [-h<lines>] <vmid> [<interval> [<count>]]
 
 ### ` jinfo`: 实时地查看和调整虚拟机各项参数
 
+[jinfo命令详解2]()https://blog.csdn.net/weixin_33815613/article/details/92464222
+
 `jinfo vmid` :输出当前 jvm 进程的全部参数和系统属性 (第一部分是系统的属性，第二部分是 JVM 的参数)。
 
 `jinfo -flag name vmid` :输出对应名称的参数的具体值。比如输出 MaxHeapSize、查看当前 jvm 进程是否开启打印 GC 日志 ( `-XX:PrintGCDetails` :详细 GC 日志模式，这两个都是默认关闭的)。
@@ -79,6 +89,14 @@ C:\Users\SnailClimb>jinfo  -flag MaxHeapSize 17340
 -XX:MaxHeapSize=2124414976
 C:\Users\SnailClimb>jinfo  -flag PrintGC 17340
 -XX:-PrintGC
+jps -l
+jinfo -flag MaxMetaspaceSize 11436
+jinfo -flag ThreadStackSize 11436
+jinfo -flag <name>=<value> 11436
+
+jinfo -flags 11436 输出命令行属性
+
+jinfo -sysprops 11436 输出系统属性
 ```
 
 使用 jinfo 可以在不重启虚拟机的情况下，可以动态的修改 jvm 的参数。尤其在线上的环境特别有用,请看下面的例子：
@@ -96,6 +114,8 @@ C:\Users\SnailClimb>jinfo  -flag  PrintGC 17340
 ```
 
 ### `jmap`:生成堆转储快照
+
+[jvm 性能调优工具](https://www.jianshu.com/p/a4ad53179df3)
 
 `jmap`（Memory Map for Java）命令用于生成堆转储快照。 如果不使用 `jmap` 命令，要想获取 Java 堆转储，可以使用 `“-XX:+HeapDumpOnOutOfMemoryError”` 参数，可以让虚拟机在 OOM 异常出现之后自动生成 dump 文件，Linux 命令下可以通过 `kill -3` 发送进程退出信号也能拿到 dump 文件。
 
@@ -140,7 +160,7 @@ Server is ready.
 public class DeadLockDemo {
     private static Object resource1 = new Object();//资源 1
     private static Object resource2 = new Object();//资源 2
-
+    
     public static void main(String[] args) {
         new Thread(() -> {
             synchronized (resource1) {

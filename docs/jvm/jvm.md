@@ -8,7 +8,7 @@
 
 [jdk8内存有啥变化](https://blog.csdn.net/chlu113/article/details/51890469)
 
-jdk8之后新增了元空间
+![一篇足够](https://img-blog.csdn.net/20180808112156511?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h1eXV5YW5nNjY4OA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 ##Java内存区域
 
@@ -102,7 +102,8 @@ jdk8之后新增了元空间
 当JVM的内存空间不足时，宁愿抛出OutOfMemoryError使得程序异常终止也不愿意回收具有强引用的存活着的对象！记住是存活着，不可能是你new一个对象就永远不会被GC回收。
 当一个普通对象没有其他引用关系，只要超过了引用的作用域或者显示的将引用赋值为null时，你的对象就表明不是存活着，这样就会可以被GC回收了。当然回收的时间是不一定的具体得看GC回收策略。
 当一个普通对象没有其他引用关系，只要超过了引用的作用域或者显示的将引用赋值为null时，你的对象就表明不是存活着，这样就会可以被GC回收了。当然回收的时间是不一定的具体得看GC回收策略。
-Object obj=new Object();
+Object obj=new Object(); 
+JuGyeong
 ```
 
 **软引用**

@@ -87,3 +87,16 @@
 - Github地址：[https://github.com/azl397985856/leetcode](https://github.com/azl397985856/leetcode)
 - star: 12.0k
 - 介绍:  LeetCode Solutions: A Record of My Problem Solving Journey.( leetcode题解，记录自己的leetcode解题之路。)
+
+###其他
+
+1.  A：JAVA后端工程师，[统一访问GitHub仓库中的java库](https://github.com/bjmashibing/java)
+1.  B：JAVA高级架构师，[统一访问GitHub仓库中的InternetArchitect库](https://github.com/bjmashibing/InternetArchitect )
+1.  C：大数据开发工程师，[统一访问GitHub仓库中的BigDataArchitect库](https://github.com/bjmashibing/BigDataArchitect )
+1.  D：AI人工智能工程师，[统一访问GitHub仓库中的]()
+1.  E：JVM资料，[统一访问GitHub仓库中的JVM库](https://github.com/bjmashibing/JVM)
+
+```
+B：JAVA高级架构师，统一访问GitHub仓库中的InternetArchitect库
+```
+

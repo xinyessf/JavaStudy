@@ -123,3 +123,11 @@ SSO英文全称Single Sign On，单点登录。SSO是在多个应用系统中，
 - 关于时序图
 
 时序图中并没有包含所有场景，ken.io只列举了核心/主要场景，另外对于一些不影响理解思路的消息能省就省了。
+
+```
+# 克隆项目
+git clone https://github.com/zwpro/coupons
+# 静态版使用以下命令
+git clone -b no-api https://github.com/zwpro/coupons
+```
+

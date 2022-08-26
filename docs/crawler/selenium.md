@@ -54,9 +54,13 @@
 
 [访问失败](http://www.cocoachina.com/articles/99330)
 
-[翻页成功如何判断]
+[翻页成功如何判断]()
+
+[全屏截图](https://blog.csdn.net/dnc8371/article/details/106809193/)
 
 ### linux配置谷歌
+
+[selenium 搭建](https://www.jb51.net/article/193721.htm)
 
 ```
 连接:183.232.208.229 端口号:10022

@@ -685,7 +685,6 @@ private Boolean enabled;
 ```java
 Entity(name="USER")
 public class User {
-
     ......
     @Transient
     private String secrect; // not persistent because of @Transient

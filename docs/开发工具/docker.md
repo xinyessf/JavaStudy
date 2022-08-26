@@ -119,3 +119,79 @@ docker ps
 
 ```
 
+### 实战
+
+#### eureka
+
+[参考](https://www.cnblogs.com/hanfengyeqiao/p/14768499.html)
+
+>docker build -t eureka -f Dockerfile .
+>
+>docker run -d -p 8001:7001 --name eureka1 --restart=always eureka
+>
+>docker stop c944726c5a4c
+>
+>http://192.168.73.128:7001/
+>
+>docker logs --since 30m 0ef3f3c5cc04
+>
+>docker logs --since 30m c944726c5a4c0157b234f9fa892906412109221bf26cc55caa4b05cd0134d60c
+>
+> netstat -anop | grep 2067
+>
+> netstat -anp | grep 2067
+
+```
+# 基于java镜像创建新镜像
+FROM docker.io/java:8
+
+# 作者
+MAINTAINER sunsf
+
+# 将jar包添加到容器中并更名为kxrw.jar
+COPY tong-eureka-gdfz.jar /usr/local/java/docker/eureka/tong-eureka-gdfz.jar
+
+# 暴露8080端口
+EXPOSE 7001
+
+# 运行jar包
+ENTRYPOINT ["nohup","java","-jar","/usr/local/java/docker/eureka/tong-eureka-gdfz.jar","--server.port=7001","&"]
+```
+
+####startup
+
+>docker build -t eureka -f Dockerfile .
+>
+>docker run -d -p 8002:7002 --name eureka1 --restart=always eureka
+
+```
+# 基于java镜像创建新镜像
+FROM docker.io/java:8
+
+# 作者
+MAINTAINER sunsf
+
+# 将jar包添加到容器中并更名为kxrw.jar
+COPY tong-eureka-gdfz.jar /usr/local/java/docker/eureka/tong-eureka-gdfz.jar
+
+# 暴露8080端口
+EXPOSE 7001
+
+# 运行jar包
+ENTRYPOINT ["nohup","java","-jar","/usr/local/java/docker/eureka/tong-eureka-gdfz.jar","--server.port=7001","&"]
+```
+
+#### gateway
+
+>
+
+```
+
+```
+
+### nginx
+
+```
+
+```
+

@@ -112,9 +112,7 @@ Dao 接口的工作原理是 JDK 动态代理，MyBatis 运行时会使用 JDK �
 
 答：不同的 Xml 映射文件，如果配置了 namespace，那么 id 可以重复；如果没有配置 namespace，那么 id 不能重复；毕竟 namespace 不是必须的，只是最佳实践而已。
 
-原因就是 namespace+id 是作为 `Map<String, MappedStatement>`的 key 使用的，如果没有 namespace，就剩下 id，那么，id 重复会导致数据互相覆盖。有了 namespace，自然 id 就可以重复，namespace 不同，namespace+id 自然也就不同。
-
-#### 12、MyBatis 中如何执行批处理？
+####  12、MyBatis 中如何执行批处理？
 
 注：我出的。
 

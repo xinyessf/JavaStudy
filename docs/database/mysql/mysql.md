@@ -84,8 +84,7 @@ groups mysql
 groupadd mysql
 useradd -g mysql -s /sbin/nologin mysql
 ## 更改mysql目录下所有的目录及文件夹所属的用户组和用户，以及权限
-chown -R mysql:mysql /usr/local/mysql
-##chmod -R 755 /usr/local/java/mysql
+ ##chmod -R 755 /usr/local/java/mysql
 cd /usr/local/mysql/support-files/
 cp mysql.server  /etc/init.d/mysqld
 chmod +x /etc/init.d/mysqld             # 添加执行权限
@@ -531,16 +530,16 @@ alter table aa change name name_1  varchar(22);
     char,最多255个字符，与编码无关。
     varchar,最多65535字符，与编码有关。
     一条有效记录最大不能超过65535个字节。
-        utf8 最大为21844个字符，gbk 最大为32766个字符，latin1 最大为65532个字符
+    utf8 最大为21844个字符，gbk 最大为32766个字符，latin1 最大为65532个字符
     varchar 是变长的，需要利用存储空间保存 varchar 的长度，如果数据小于255个字节，则采用一个字节来保存长度，反之需要两个字节来保存。
     varchar 的最大有效长度由最大行大小和使用的字符集确定。
     最大有效长度是65532字节，因为在varchar存字符串时，第一个字节是空的，不存在任何数据，然后还需两个字节来存放字符串的长度，所以有效长度是64432-1-2=65532字节。
     例：若一个表定义为 CREATE TABLE tb(c1 int, c2 char(30), c3 varchar(N)) charset=utf8; 问N的最大值是多少？ 答：(65535-1-2-4-30*3)/3
 -- b. blob, text ----------
     blob 二进制字符串（字节字符串）
-        tinyblob, blob, mediumblob, longblob
+    tinyblob, blob, mediumblob, longblob
     text 非二进制字符串（字符字符串）
-        tinytext, text, mediumtext, longtext
+    tinytext, text, mediumtext, longtext
     text 在定义时，不需要定义长度，也不会计算总长度。
     text 类型在定义时，不可给default值
 -- c. binary, varbinary ----------
@@ -613,7 +612,7 @@ FULLTEXT，HASH，BTREE，RTREE。
 即为全文索引，目前只有MyISAM引擎支持。其可以在CREATE TABLE ，ALTER TABLE ，CREATE INDEX 使用，不过目前只有 CHAR、VARCHAR ，TEXT 列上可以创建全文索引。
      全文索引并不是和MyISAM一起诞生的，它的出现是为了解决WHERE name LIKE %word%这类针对文本的模糊查询效率较低的问题
 -- HASH
-由于HASH的唯一（几乎100%的唯一）及类似键值对的形式，很适合作为索引。
+	由于HASH的唯一（几乎100%的唯一）及类似键值对的形式，很适合作为索引。
 HASH索引可以一次定位，不需要像树形索引那样逐层查找,因此具有极高的效率。但是，这种高效是有条件的，即只在“=”和“in”条件下高效，对于范围查询、排序及组合索引仍然效率不高。
 -- BTREE
 BTREE索引就是一种将索引值按一定的算法，存入一个树形的数据结构中（二叉树），每次查询都是从树的入口root开始，依次遍历node，获取leaf。这是MySQL里默认和最常用的索引类型。
